@@ -53,7 +53,6 @@ $("document").ready( function () {
 
 
     //FILTROS
-    //pintar botones de forma dinámica
     
     function filtrarPorCategoria(categoria) {
         //alert("estoy filtrando por la categoría "+categoria);
@@ -86,7 +85,7 @@ $("document").ready( function () {
         success : function(infoCategorias){
             console.log(infoCategorias);
             //TODOS LAS CATEGORIAS
-            // var todasLasCategorias = ;
+            //pintar botones de forma dinámica
             let cadena ="";
             for(i=0;i<infoCategorias.length;i++){
                 cadena+=`
@@ -97,6 +96,7 @@ $("document").ready( function () {
 
             $(".filtros").html(cadena);
             $(".btn-filtroCategoria").click(function(event){
+                //event.target.id.substring(7) lo que hace es que le quita los caracteres 'filtro-'
                 filtrarPorCategoria(event.target.id.substring(7));
             });
             $(".eliminarFiltro").click(todosLosProductos);

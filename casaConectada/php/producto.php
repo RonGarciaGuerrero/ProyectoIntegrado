@@ -55,6 +55,14 @@ class Producto{
         return json_encode($categorias);
     }
 
+    static function obtenerDetalleProducto(){
+        $idProd=$_REQUEST['idPro'];
+        $sentencia = "SELECT * FROM productos where id = $idProd";
+        $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
+
+        return json_encode($result[0]);//el primer resultado
+    }
+
     // static function filtrarPorCategoria(nombreCategoria){
     //     $sentencia = "SELECT distinct categoria FROM productos";
     //     $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
@@ -75,6 +83,8 @@ if($_REQUEST['funcion']=='obtenerCategorias'){
 if($_REQUEST['funcion']=='obtenerProductos'){
     print(Producto::obtenerProductos());//imprime todos los productos en JSON, llamada a obtenerProductos()
 }
-
+if($_REQUEST['funcion']=='obtenerDetalleProducto'){
+    print(Producto::obtenerDetalleProducto());//imprime un producto identificado por id
+}
 
 ?>
