@@ -54,11 +54,6 @@ $("document").ready( function () {
     
     
    
-    
-    
-
-    
-    
 
 });
     

@@ -11,17 +11,29 @@
       <link rel="stylesheet" href="./css/styles.css" />
       <meta charset="UTF-8" />
       <script type="text/javascript" src="./scripts/index.js"></script>
+      <script type="text/javascript" src="./scripts/badge.js"></script>
   </head>
   <body>
     
     <header>
       <div class="logo">
-        <div class="container">
+        <div class="container-fluid">
         <a href="./index.html"><img src="./img/logoimagen.png" class="logo" height="50px"></a>
         <a href="./index.html"><img src="./img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
-        <div class="login"><a href="./carrito.html"><img src="./img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./login.html"><img src="./img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
+        <div class="login">
+          <!-- Aqui se inserta el badge de bootstrap para que avise de los productos que estan metidos en el carrito con el localStorage -->
+          <a class="position-relative d-inline-block mx-4" href="./web/carrito.html">
+            <img src="./img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito">
+              <span id="badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <span class="visually-hidden">Productos en el carrito</span> 
+              </span>
+          </a>
+          <a href="./web/login.html"><img src="./img/icons/padlock.png" alt="login" height="15px" title="Login"></a>
+          <!-- <a href="./carrito.html"><img src="./img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./login.html"><img src="./img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
+          </div> -->
         </div>
       </div>
+    </div>
       <nav>
         <!-- Se usa un contenedor para centrar la página -->
         <a href="#"><div class="secciones">

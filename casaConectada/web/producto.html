@@ -11,7 +11,7 @@
       <link rel="stylesheet" href="../css/styles.css" />
       <meta charset="UTF-8" />
       <script type="text/javascript" src="../scripts/detalleProducto.js"></script>
-      
+      <script type="text/javascript" src="../scripts/badge.js"></script>
     <!-- Aqui se usan estos dos scripts para poder ver la ficha del producto seleccionado -->
   </head>
   <body>
@@ -19,9 +19,18 @@
     <header>
       <div class="logo">
         <div class="container-fluid">
-        <a href="../index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
-        <a href="./index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
-        <div class="login"><a href="./carrito.html"><img src="../img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
+          <a href="../index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
+          <a href="./index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
+          <div class="login">
+            <!-- Aqui se inserta el badge de bootstrap para que avise de los productos que estan metidos en el carrito con el localStorage -->
+            <a class="position-relative d-inline-block mx-4" href="./carrito.html">
+              <img src="../img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito">
+                <span id="badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  <span class="visually-hidden">Productos en el carrito</span> 
+                </span>
+            </a>
+            <a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a>
+          </div>
         </div>
       </div>
       <nav>
@@ -78,18 +87,54 @@
               <div class="col-lg-6 bg-light">
                 <div><h5>Resumen:</h5></div>
                 <div id="resPro"></div>
-                <div><h5>Precio</h5></div>
-                <div id="precioPro"></div>
-                <button class="btn btn-outline-dark" id="botonAniadir">Añadir al carrito</button>
+                <div class="mt-1"><h5>Precio</h5></div>
+                <div class="mb-1 fs-4" id="precioPro"></div>
+                <div class="container m-0 p-0">
+                  <div class="row">
+                    <div class="col-2 ">
+                      <label for="cantidad">Cantidad: </label>
+                      <select id="cantidad" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        
+                        <option selected value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                      </select>
+                    </div> 
+                    
+                  </div>
+                  
+                
+                </div>
+                <button class="my-3 btn btn-outline-dark" id="botonAniadir" data-bs-toggle="modal" data-bs-target="#exampleModal">Añadir al carrito</button>
                 <div id="categoriaPro"></div>
               </div>
-              <div class=""></div>
+              <!-- modal -->
+              <div class="modal" tabindex="-1" id="exampleModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Confirmación:</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Se ha añadido al carrito correctamente.</p>
+                      <p>Puede continuar comprando o ir al carrito para finalizar la compra.</p>
+                    </div>
+                    <!-- <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- fin modal -->
             </div>
             
-            <div class="row bg-warning text-black p-2">
+            <div class="row bg-warning text-black p-2 mb-4">
               <h5>Descripción:</h5>
               <div id="descPro">Descripcion larga </div>
-              </div>
+            </div>
           </div>
 
           

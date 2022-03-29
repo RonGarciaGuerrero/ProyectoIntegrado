@@ -1,0 +1,29 @@
+lista casa conectada:
+
+1- Administración
+	Desplegar productos dentro de la BBDD:
+	 	- Pantalla de lista de productos con botones de editar y eliminar
+		- Pantalla edicion de producto
+		- Pantalla agregar producto
+		- Backend para eliminar y editar 
+	Usuarios administradores (backend)
+		- Backend para verificar un usuario ( recibe el password y el username y 		verifica contra la base de datos de autenticacion)
+	Tabla usuarios en la bbdd
+		- Crear la tabla y agregar manualmente los usuarios y contraseñas	
+	Pantalla visualizacion pedidos
+		- Pantalla para listar los pedidos con botones para editar
+		- Pantalla para editar el pedido
+		- Backend para agregar el pedido
+		- Backend para eliminar el pedido
+		- Diseñar y crear la(s) tabla de pedido(s)
+	
+2- Front
+	Guardar los datos del pedido, tras la compra, guardar el estado y los detalles (hacer el backend)
+		- Recoger la informacion del formulario + lo que este en carrito y hacer uso del backend de creacion de pedido para insertar en la BBDD
+		- Borrar el carrito almacenado
+	Ajustar fotos de los productos para que sean varias
+		- agregar campos adicionales en la table de la bd e insertar las fotos
+
+******************
+
+añadir a todos los html el script del badge
