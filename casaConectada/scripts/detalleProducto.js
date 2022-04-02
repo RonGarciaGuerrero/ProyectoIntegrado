@@ -8,7 +8,7 @@ $("document").ready( function () {
         dataType: "JSON",
         success : function(infoProducto){
             $("#nomPro").html(infoProducto.nombre);
-            // <div style="background-image:url(/PI/casaConectada/img/productos/prod_${prod.id}_1.jpg)" class="card-img-top" alt="${prod.nombre}"></div>
+            
             $("#resPro").html(infoProducto.resumen);
             $("#fotoPro1").attr('src',`/PI/casaConectada/img/productos/prod_${infoProducto.id}_1.jpg`);
             $("#fotoPro2").attr('src',`/PI/casaConectada/img/productos/prod_${infoProducto.id}_1.jpg`);
@@ -40,12 +40,13 @@ $("document").ready( function () {
         //si ya existe ese id en el carrito le suma 1 
         if(idProducto in carritoJSON){
             carritoJSON[idProducto]['cantidad'] += parseInt($("#cantidad").val());
-        }else{//se inserta un producto en el carrito usando el id de producto como clave y como valor un objeto javascript con los detalles
-            carritoJSON[idProducto]={"nombre":$('#nomPro').text(),"foto":$('#fotoPro1').attr("src"),"precio":$('#precioPro').text(),"cantidad":parseInt($("#cantidad").val())};//se hace un parseInt porque los valores del select es texto y se cambia a número
+        }else{//se inserta un producto en el carrito usando el id de producto como clave y como valor un objeto javascript con los detalles solo se guarda la cantidad y el id proque el producto puede cambiar de precio
+            carritoJSON[idProducto]={"cantidad":parseInt($("#cantidad").val())};//se hace un parseInt porque los valores del select es texto y se cambia a número
         }
         
         //una vez modificado el carrito se vuelve a guardar en el local storage
         localStorage.setItem('carrito',JSON.stringify(carritoJSON));
+        actualizarBadge();
     });
     
 

@@ -10,8 +10,9 @@
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/styles.css"/>
         <meta charset="UTF-8"/>
-        <script type="text/javascript" src="../scripts/login.js"></script>
+        <!-- <script type="text/javascript" src="../scripts/login.js"></script> -->
         <script type="text/javascript" src="../scripts/carrito.js"></script>
+        <script type="text/javascript" src="../scripts/badge.js"></script>
         
     </head>
     <body>
@@ -30,18 +31,18 @@
                 </div>
               </nav>
           </header>
-        <main>
+        <div class="container">
+          <main>
           <div class="row g-5">
             <div class="col-md-5 col-lg-4 order-md-last">
               <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-primary">Your cart</span>
+                <span class="text-primary">Tu carrito</span>
                 <span class="badge bg-primary rounded-pill">3</span>
               </h4>
               <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                   <div>
                     <h6 class="my-0">Product name</h6>
-                    <small class="text-muted">Brief description</small>
                   </div>
                   <span class="text-muted">$12</span>
                 </li>
@@ -80,35 +81,26 @@
               </form>
             </div>
             <div class="col-md-7 col-lg-8">
-              <h4 class="mb-3">Billing address</h4>
+              <h4 class="mb-3">Direccion de facturación</h4>
               <form class="needs-validation" novalidate>
                 <div class="row g-3">
                   <div class="col-sm-6">
-                    <label for="firstName" class="form-label">First name</label>
+                    <label for="firstName" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
                     <div class="invalid-feedback">
-                      Valid first name is required.
+                      El Nombre es un campo obligatorio.
                     </div>
                   </div>
       
                   <div class="col-sm-6">
-                    <label for="lastName" class="form-label">Last name</label>
+                    <label for="lastName" class="form-label">Apellido</label>
                     <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
                     <div class="invalid-feedback">
-                      Valid last name is required.
+                      El Apellido es un campo obligatorio.
                     </div>
                   </div>
       
-                  <div class="col-12">
-                    <label for="username" class="form-label">Username</label>
-                    <div class="input-group has-validation">
-                      <span class="input-group-text">@</span>
-                      <input type="text" class="form-control" id="username" placeholder="Username" required>
-                    <div class="invalid-feedback">
-                        Your username is required.
-                      </div>
-                    </div>
-                  </div>
+                  
       
                   <div class="col-12">
                     <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
@@ -127,107 +119,77 @@
                   </div>
       
                   <div class="col-12">
-                    <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    <label for="cp" class="form-label">Código Postal <span class="text-muted">CP</span></label>
+                    <input type="text" class="form-control" id="cp" placeholder="Código Postal">
                   </div>
-      
                   <div class="col-md-5">
-                    <label for="country" class="form-label">Country</label>
-                    <select class="form-select" id="country" required>
-                      <option value="">Choose...</option>
-                      <option>United States</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please select a valid country.
-                    </div>
-                  </div>
-      
-                  <div class="col-md-4">
-                    <label for="state" class="form-label">State</label>
-                    <select class="form-select" id="state" required>
-                      <option value="">Choose...</option>
-                      <option>California</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please provide a valid state.
-                    </div>
-                  </div>
-      
-                  <div class="col-md-3">
-                    <label for="zip" class="form-label">Zip</label>
-                    <input type="text" class="form-control" id="zip" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Zip code required.
-                    </div>
+                    <label for="cantidad">Provincia </label>
+                      <select id="cantidad" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        
+                        <option selected value="01">Álava</option>
+                          <option value="02">Albacete</option>
+                          <option value="03">Alicante</option>
+                          <option value="04">Almería</option>
+                          <option value="05">Ávila</option>
+                          <option value="06">Badajoz</option>
+                          <option value="07">Baleares</option>
+                          <option value="08">Barcelona</option>
+                          <option value="09">Burgos</option>
+                          <option value="10">Cáceres</option>
+                          <option value="11">Cádiz</option>
+                          <option value="12">Castellón</option>
+                          <option value="13">Ciudad Real</option>
+                          <option value="14">Córdoba</option>
+                          <option value="15">La Coruña</option>
+                          <option value="16">Cuenca</option>
+                          <option value="17">Gerona/Girona</option>
+                          <option value="18">Granada</option>
+                          <option value="19">Guadalajara</option>
+                          <option value="20">Guipúzcoa</option>
+                          <option value="21">Huelva</option>
+                          <option value="22">Huesca</option>
+                          <option value="23">Jaén</option>
+                          <option value="24">León</option>
+                          <option value="25">Lérida/Lleida</option>
+                          <option value="26">La Rioja</option>
+                          <option value="27">Lugo</option>
+                          <option value="28">Madrid</option>
+                          <option value="29">Málaga</option>
+                          <option value="30">Murcia</option>
+                          <option value="31">Navarra</option>
+                          <option value="32">Orense</option>
+                          <option value="33">Asturias</option>
+                          <option value="34">Palencia</option>
+                          <option value="35">Las Palmas</option>
+                          <option value="36">Pontevedra</option>
+                          <option value="37">Salamanca</option>
+                          <option value="38">Santa Cruz de Tenerife</option>
+                          <option value="39">Cantabria</option>
+                          <option value="40">Segovia</option>
+                          <option value="41">Sevilla</option>
+                          <option value="42">Soria</option>
+                          <option value="43">Tarragona</option>
+                          <option value="44">Teruel</option>
+                          <option value="45">Toledo</option>
+                          <option value="46">Valencia</option>
+                          <option value="47">Valladolid</option>
+                          <option value="48">Vizcaya</option>
+                          <option value="49">Zamora</option>
+                          <option value="50">Zaragoza</option>
+                          <option value="51">Ceuta</option>
+                          <option value="52">Melilla</option>
+                      </select>
                   </div>
                 </div>
       
                 <hr class="my-4">
       
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="same-address">
-                  <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-                </div>
-      
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="save-info">
-                  <label class="form-check-label" for="save-info">Save this information for next time</label>
-                </div>
-      
-                <hr class="my-4">
-      
-                <h4 class="mb-3">Payment</h4>
+                <h4 class="mb-3">Pago</h4>
       
                 <div class="my-3">
                   <div class="form-check">
-                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                    <label class="form-check-label" for="credit">Credit card</label>
+                    <p>El págo se realizará a traves de transferencia bancaria, los datos los recibirá una vez confirmado el pedido.</p>
                   </div>
-                  <div class="form-check">
-                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                    <label class="form-check-label" for="debit">Debit card</label>
-                  </div>
-                  <div class="form-check">
-                    <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                    <label class="form-check-label" for="paypal">PayPal</label>
-                  </div>
-                </div>
-      
-                <div class="row gy-3">
-                  <div class="col-md-6">
-                    <label for="cc-name" class="form-label">Name on card</label>
-                    <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                    <small class="text-muted">Full name as displayed on card</small>
-                    <div class="invalid-feedback">
-                      Name on card is required
-                    </div>
-                  </div>
-      
-                  <div class="col-md-6">
-                    <label for="cc-number" class="form-label">Credit card number</label>
-                    <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Credit card number is required
-                    </div>
-                  </div>
-      
-                  <div class="col-md-3">
-                    <label for="cc-expiration" class="form-label">Expiration</label>
-                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Expiration date required
-                    </div>
-                  </div>
-      
-                  <div class="col-md-3">
-                    <label for="cc-cvv" class="form-label">CVV</label>
-                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Security code required
-                    </div>
-                  </div>
-                </div>
-      
                 <hr class="my-4">
       
                 <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
@@ -235,6 +197,8 @@
             </div>
           </div>
         </main>
+        
+        </div>
         <!-- Footer responsive con bootstrap -->
         <div class="container-fluid">
           <div class="row">

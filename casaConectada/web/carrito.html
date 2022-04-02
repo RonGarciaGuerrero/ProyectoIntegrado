@@ -12,15 +12,25 @@
         <meta charset="UTF-8"/>
         <script type="text/javascript" src="../scripts/login.js"></script>
         <script type="text/javascript" src="../scripts/carrito.js"></script>
+        <script type="text/javascript" src="../scripts/badge.js"></script>
         
     </head>
     <body>
         <header>
             <div class="logo">
-              <div class="container">
-              <a href="./index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
-              <a href="./index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
-              <div class="login"><a href="./carrito.html"><img src="../img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
+              <div class="container-fluid">
+              <a href="../index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
+              <a href="../index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
+              <div class="login">
+                <!-- Aqui se inserta el badge de bootstrap para que avise de los productos que estan metidos en el carrito con el localStorage -->
+                <a class="position-relative d-inline-block mx-4" href="./web/carrito.html">
+                <img src="../img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito">
+                <span id="badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <span class="visually-hidden">Productos en el carrito</span> 
+              </span>
+          </a>
+          <a href="./web/login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a>
+              </div>
               </div>
             </div>
             <nav>
@@ -36,9 +46,19 @@
                 
                  <div class="container table-responsive">
                    <div class="row">   
-                    <table class="tablaCarrito table table-hover">
-                      <thead><th>Foto</th><th>Nombre</th><th>Cantidad</th><th>Precio</th><th>Total</th></thead>
+                    <table class="tablaCarrito table table-hover table-striped table-bordered border-secondary">
+                      <thead><th>Foto</th><th>Nombre</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th></thead>
                       <tbody></tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="4" class="text-">Envío</td>
+                          <td id="envio" class="text-end">5€</td>
+                        </tr>
+                        <tr class="fs-4">
+                          <td colspan="4">Total</td>
+                          <td id="total" class="text-end">precio</td>
+                        </tr>
+                      </tfoot>
                     </table>
                   </div>
                     <button class="btn btn-outline-dark m-2">Pagar</button>
