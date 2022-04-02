@@ -11,6 +11,7 @@ function actualizarBadge(){
             numProductos += value.cantidad;
         }
         $("#badge").html(numProductos);
+        $("#badge2").html(numProductos);
     }
 }
 

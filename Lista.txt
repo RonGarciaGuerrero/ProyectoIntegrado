@@ -18,12 +18,18 @@ lista casa conectada:
 		- Diseñar y crear la(s) tabla de pedido(s)
 	
 2- Front
-	Guardar los datos del pedido, tras la compra, guardar el estado y los detalles (hacer el backend)
+	Validar campos del formulario del checkout 	
+	Guardar los datos del pedido, tras la compra, guardar el estado y los detalles (hacer el backend) el php recibe todos los datos del formulario del pedido y hacer un insert (crear la tabla en la bbdd)
+ 
 		- Recoger la informacion del formulario + lo que este en carrito y hacer uso del backend de creacion de pedido para insertar en la BBDD
+
 		- Borrar el carrito almacenado
-	Ajustar fotos de los productos para que sean varias
+
+		Ajustar fotos de los productos para que sean varias
 		- agregar campos adicionales en la table de la bd e insertar las fotos
 
 ******************
-
+done:
 añadir a todos los html el script del badge
+modificar el checkout
+carrito funcionando desde la bbdd
