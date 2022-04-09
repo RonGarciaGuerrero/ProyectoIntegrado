@@ -7,37 +7,81 @@ class Pedido{
 
     public $id;
     public $nombre;
-    public $marca;
-    public $categoria;
-    public $unidades;
-    public $resumen;
-    public $descripcion;
-    public $precio;
+    public $apellidos;
+    public $email;
+    public $direccion;
+    public $cp;
+    public $provincia;
+    public $precioEnvio;
 
-    function __construct($id,$nombre,$marca,$categoria,$unidades,$resumen,$descripcion,$precio){
+    function __construct($id,$nombre,$apellidos,$email,$direccion,$cp,$provincia,$precioEnvio){
 
         $this->id=$id;
         $this->nombre=$nombre;
-        $this->marca=$marca;
-        $this->categoria=$categoria;
-        $this->unidades=$unidades;
-        $this->resumen=$resumen;
-        $this->descripcion=$descripcion;
-        $this->precio=$precio;
+        $this->apellidos=$apellidos;
+        $this->email=$email;
+        $this->direccion=$direccion;
+        $this->cp=$cp;
+        $this->provincia=$provincia;
+        $this->precioEnvio=$precioEnvio;
 
     }
 
     static function guardarPedido(){
         $resultado=Array();
         $errores=Array(); 
-        if(!array_key_exists("nombre",$_REQUEST) || $_REQUEST['nombre']== null || $_REQUEST['nombre']== "" ){
-            array_push($errores,'el nombre es obligatorio');
+        //aqui se hacen las validaciones del formulario, el trim elimina espacio sal inicio y al final de la cadena
+
+        if(!array_key_exists("nombre",$_REQUEST) || $_REQUEST['nombre'] == null || trim($_REQUEST['nombre'])== "" ){
+            array_push($errores,'El nombre es obligatorio');
+        }
+        
+        if(!array_key_exists("apellidos",$_REQUEST)|| $_REQUEST['apellidos'] == null || trim($_REQUEST['apellidos'])== "" ){
+            array_push($errores,'El apellido es obligatorio');
+        }
+
+        if(!array_key_exists("email",$_REQUEST)|| $_REQUEST['email'] == null || trim($_REQUEST['email'])== "" ){
+            array_push($errores,'El email es obligatorio');
+        }else{//aqui viene el email pero se valida ahora que este escrito correctamente 
+            $regex="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
+            if(!preg_match($regex, $_REQUEST['email'])){
+                array_push($errores,'El formato de email es incorrecto');
+            }
+        }
+
+        if(!array_key_exists("direccion",$_REQUEST)|| $_REQUEST['direccion'] == null || trim($_REQUEST['direccion'])== "" ){
+            array_push($errores,'La dirección es obligatoria');
+        }
+
+        if(!array_key_exists("cp",$_REQUEST)|| $_REQUEST['cp'] == null || trim($_REQUEST['cp'])== "" ){
+            array_push($errores,'El código postal es obligatorio');
+        }else{
+            $regex="/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/";
+            if(!preg_match($regex, $_REQUEST['cp'])){
+                array_push($errores,'El formato de codigo postal es incorrecto');
+            }
+        }
+
+        if(!array_key_exists("provincia",$_REQUEST)|| $_REQUEST['provincia'] == null || trim($_REQUEST['provincia'])== "" ){
+            array_push($errores,'La provincia es obligatoria');
+        }else{
+            $regex="/^[0-9]{2}$/";
+            
+            if(!preg_match($regex, $_REQUEST['provincia'])){
+                array_push($errores,'La provincia tiene un formato incorrecto');
+            }else{//la provincia tiene 2 digitos
+                $provinciaInt=intval($_REQUEST['provincia']);
+                if($provinciaInt<1||$provinciaInt>52){
+                    array_push($errores,'El número de provincia es incorrecto');
+                }
+            }
         }
 
         //una vez terminadas las validaciones o se guarda el pedido o se devuelven errores
         if(count($errores)==0){
             $resultado['guardado']=true;
             //como no hay errores deberiamos guardar y meter en el resultado el id del pedido
+            Pedido::guardarPedidoBbdd();
         }else{
             $resultado['guardado']=false;
             $resultado['errores']=$errores;
@@ -45,7 +89,30 @@ class Pedido{
         return json_encode($resultado);
     }
 
+    static function guardarPedidoBbdd(){
+        $errores=[];//se crea un array que contendrá los errores
+        $nombre=$_REQUEST['nombre'];
+        $apellidos=$_REQUEST['apellidos'];
+        $email=$_REQUEST['email'];
+        $direccion=$_REQUEST['direccion'];
+        $cp=$_REQUEST['cp'];
+        $precio_envio=5;//de momento se pone el precio de envío directamente
 
+        try{//se meten los datos del pedido en la bbdd
+            $sentencia = " INSERT INTO pedidos (id,nombre,apellidos,email,direccion,codigo_postal,precio_envio) VALUES ('','$nombre','$apellidos','$email','$direccion','$cp','$precio_envio')";
+
+            DB::query($sentencia);
+
+        }catch(Exception $e){
+            $errores[]=$e->getMessage();//añado el mensaje del error
+        }
+        //se imprime un objeto json haya errores o no
+        if(sizeof( $errores) > 0){
+            print(json_encode(array('status'=>'error','mensaje'=>$errores)) );
+        }else{
+            print(json_encode(array('status'=>'ok')));
+        }
+    }
 
 }
 if($_REQUEST['funcion']=='guardarPedido'){

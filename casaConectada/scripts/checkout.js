@@ -11,7 +11,7 @@ $("document").ready( function () {
                 "apellidos":$('#lastName').val(),
                 "email":$('#email').val(),
                 "direccion":$('#direccion').val(),
-                "codigoPostal":$('#cp').val(),
+                "cp":$('#cp').val(),
                 "provincia":$('#provincia').val()
 
               },
