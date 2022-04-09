@@ -142,9 +142,9 @@ body {
   .divAniadir{
     float: right;
   }
-  /* Reglas de validacion formulario */
-  input:invalid{
-    background-color: rgb(228, 228, 228);
+  /* Reglas de validacion formulario tiene una funcion en el checkout.js para que se le añada la clase enviado al pulsar el submit de ese modo el campo no sale rojo al principio sino cuando se haya intentado enviado el formulario*/
+  form.enviado input:invalid{
+    background-color: rgb(255, 170, 170);
   }
   
   .tableAniadir, th, td{

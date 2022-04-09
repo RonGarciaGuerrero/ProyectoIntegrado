@@ -24,7 +24,7 @@
               <a href="./index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
               <div class="login">
                 <!-- Aqui se inserta el badge de bootstrap para que avise de los productos que estan metidos en el carrito con el localStorage -->
-                <a class="position-relative d-inline-block mx-4" href="./web/carrito.html">
+                <a class="position-relative d-inline-block mx-4" href="./carrito.html">
                   <img src="../img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito">
                   <span id="badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   <span class="visually-hidden">Productos en el carrito</span> 
@@ -43,7 +43,7 @@
           </header>
         <div class="container">
           <main>
-          <div class="row g-5">
+          <div class="row">
             <div class="col-md-5 col-lg-4 order-md-last">
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-primary">Tu carrito</span>
@@ -56,7 +56,7 @@
             </div>
             <div class="col-md-7 col-lg-8">
               <h4 class="mb-3">Dirección de facturación</h4>
-              <form class="needs-validation" novalidate>
+              <form class="needs-validation">
                 <div class="row g-3">
                   <div class="col-sm-6">
                     <label for="firstName" class="form-label">Nombre</label>
@@ -67,7 +67,7 @@
                   </div>
       
                   <div class="col-sm-6">
-                    <label for="lastName" class="form-label">Apellido</label>
+                    <label for="lastName" class="form-label">Apellidos</label>
                     <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
                     <div class="invalid-feedback">
                       El Apellido es un campo obligatorio.
@@ -78,7 +78,7 @@
       
                   <div class="col-12">
                     <label for="email" class="form-label">Email </label>
-                    <input type="email" class="form-control" id="email" placeholder="correo@ejemplo.com">
+                    <input type="email" class="form-control" id="email" placeholder="correo@ejemplo.com" required>
                     <div class="invalid-feedback">
                       Introduzca un email válido.
                     </div>
@@ -94,11 +94,11 @@
       
                   <div class="col-12">
                     <label for="cp" class="form-label">Código Postal <span class="text-muted">CP</span></label>
-                    <input type="text" class="form-control" id="cp" placeholder="Código Postal">
+                    <input type="text" class="form-control" id="cp" placeholder="Código Postal" required>
                   </div>
                   <div class="col-md-5">
-                    <label for="cantidad">Provincia </label>
-                      <select id="cantidad" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <label for="provincia">Provincia </label>
+                      <select id="provincia" class="form-select form-select-sm" aria-label=".form-select-sm example">
                         
                         <option selected value="01">Álava</option>
                           <option value="02">Albacete</option>

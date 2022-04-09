@@ -1,6 +1,31 @@
 $("document").ready( function () {
      //Se va a llamar esta funcion en cada iteracion del ajax cuando añade un producto, asi se va a ir calculando el total
-    
+    $("form button[type='submit']").click(function(event){
+      event.preventDefault();
+      $("form").addClass("enviado");
+      $.ajax({
+        type:"GET",
+        url: "../PHP/checkout.php",
+        data: {'funcion':'guardarPedido',
+                "nombre":$('#firstName').val(),
+                "apellidos":$('#lastName').val(),
+                "email":$('#email').val(),
+                "direccion":$('#direccion').val(),
+                "codigoPostal":$('#cp').val(),
+                "provincia":$('#provincia').val()
+
+              },
+        dataType: "text",
+        success : function(infoPedido){
+          console.log(infoPedido);
+          
+        },
+        error : function(XHR, status){
+            alert("No se ha podido conectar con la base de datos para realizar el pedido");
+       }
+      });
+
+    });
     
      function calcularTotal(){
         let total = 0;
@@ -22,7 +47,7 @@ $("document").ready( function () {
                 
                 html+= `<li id="prod${key}" class="filaProducto list-group-item d-flex justify-content-between lh-sm">
                 <div>
-                  <h6 class="my-0"><span class="cantidad">${value.cantidad}</span>x<span class="productName"></span></h6>
+                  <h6 class="my-0 pe-2"><span class="cantidad">${value.cantidad}</span>x<span class="productName"></span></h6>
                   
                 </div>
                 <span class="precio text-muted">8€</span>
