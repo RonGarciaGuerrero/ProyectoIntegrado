@@ -30,6 +30,10 @@ class Pedido{
     static function guardarPedido(){
         $resultado=Array();
         $errores=Array(); 
+        
+        //print(json_encode($_REQUEST["idProductos"]));
+        //print(json_encode($_REQUEST["cantidadProductos"]));
+        
         //aqui se hacen las validaciones del formulario, el trim elimina espacio sal inicio y al final de la cadena
 
         if(!array_key_exists("nombre",$_REQUEST) || $_REQUEST['nombre'] == null || trim($_REQUEST['nombre'])== "" ){
@@ -79,12 +83,15 @@ class Pedido{
 
         //una vez terminadas las validaciones o se guarda el pedido o se devuelven errores
         if(count($errores)==0){
-            $resultado['guardado']=true;
+            
             //como no hay errores deberiamos guardar y meter en el resultado el id del pedido
-            Pedido::guardarPedidoBbdd();
+            $resultadoBBDD=Pedido::guardarPedidoBbdd();
+            $resultado=array_merge($resultadoBBDD,$resultado);
         }else{
             $resultado['guardado']=false;
             $resultado['errores']=$errores;
+            
+
         }
         return json_encode($resultado);
     }
@@ -97,22 +104,40 @@ class Pedido{
         $direccion=$_REQUEST['direccion'];
         $cp=$_REQUEST['cp'];
         $precio_envio=5;//de momento se pone el precio de envío directamente
-
+        $idPedido = null;
         try{//se meten los datos del pedido en la bbdd
             $sentencia = " INSERT INTO pedidos (id,nombre,apellidos,email,direccion,codigo_postal,precio_envio) VALUES ('','$nombre','$apellidos','$email','$direccion','$cp','$precio_envio')";
 
-            DB::query($sentencia);
+            $idPedido=DB::insert($sentencia);
+            
+
+            //se itera sobre los productos y se insertan uno a uno
+
+            for($i=0;$i<count($_REQUEST["idProductos"]);$i++){
+                //print("Del producto ".$_REQUEST["idProductos"][$i]." Se han pedido ".$_REQUEST["cantidadProductos"][$i]." unidades. ");
+                $cant=$_REQUEST["cantidadProductos"][$i];
+                $idProd=$_REQUEST["idProductos"][$i];
+                $sentencia = "INSERT INTO pedidos_productos(id_pedido,id_producto,cantidad,precio_unitario)
+                VALUES ($idPedido,$idProd,$cant,(SELECT precio FROM productos WHERE id = $idProd))";
+                DB::query($sentencia);
+                $sentencia = "UPDATE productos SET unidades = unidades - $cant WHERE id = $idProd";
+                DB::query($sentencia);
+                //QUEDA PENDIENTE MEJORAR EL CODIGO PARA QUE NO QUEDEN LAS UNIDADES EN NEGATIVO
+                
+            }
+
 
         }catch(Exception $e){
             $errores[]=$e->getMessage();//añado el mensaje del error
         }
         //se imprime un objeto json haya errores o no
         if(sizeof( $errores) > 0){
-            print(json_encode(array('status'=>'error','mensaje'=>$errores)) );
+            return array('guardado'=>false,'mensaje'=>$errores);
         }else{
-            print(json_encode(array('status'=>'ok')));
+            return array('guardado'=>true,'idPedido'=>$idPedido);
         }
     }
+
 
 }
 if($_REQUEST['funcion']=='guardarPedido'){

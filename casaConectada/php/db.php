@@ -27,6 +27,26 @@ class DB{
     }
         //Se usa SELF:: para llamar metodos estaticos en la misma clase
         //self::query($sentencia);
+    
+    
+    //esta funcion se usa para insertar en tablas cuyo id es autoincrement y devuelve el id que se genera al insertar
+    static function insert($sentencia){
+        //Abro Conexion
+        $conexion=mysqli_connect(self::$server, self::$user, self::$password, self::$dbName);
+        //ejecuto sentencia 
+        $resultado = mysqli_query( $conexion,$sentencia);// or die(mysqli_error($conexion));
+        //Cierro Conexion
+        if(!$resultado){
+            echo mysqli_error($conexion);
+        }
+        
+        $insertId=mysqli_insert_id($conexion);
+
+        mysqli_close($conexion);
+        
+        return $insertId;
+    }
+  
 }
 
 ?>

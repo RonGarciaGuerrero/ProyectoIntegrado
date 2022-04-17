@@ -49,9 +49,8 @@
                 <span class="text-primary">Tu carrito</span>
                 <span id="badge2" class="badge bg-primary rounded-pill">3</span>
               </h4>
-              <ul id="listaProductos" class="list-group mb-3">
-                
-              </ul>
+              
+              <ul id="listaProductos" class="list-group mb-3"></ul>
       
             </div>
             <div class="col-md-7 col-lg-8">
@@ -163,11 +162,52 @@
       
                 <div class="my-3">
                   <div class="form-check">
-                    <p>El págo se realizará a traves de transferencia bancaria, los datos los recibirá una vez confirmado el pedido.</p>
+                    <p>El pago se realizará a traves de transferencia bancaria, los datos los recibirá una vez confirmado el pedido.</p>
                   </div>
                 <hr class="my-4">
       
                 <button class="w-100 btn btn-primary btn-lg" type="submit">Continue para finalizar el pedido</button>
+                
+                <div id="myModal" class="modal" tabindex="-1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Error al hacer el pedido</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>El formulario tiene los siguientes errores:</p>
+                        <ul id="ulErrores">
+                          
+                        </ul>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div id="myModal2" data-bs-backdrop="static" class="modal" tabindex="-1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Confirmación del pedido.</h5>
+                        
+                      </div>
+                      <div class="modal-body">
+                        <p>El pedido se ha realizado con exito. <br>Su número de pedido es <span id="idPedidoConfirmado"></span> <br> Muchas gracias.</p>
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button onclick="window.location.href='../index.html'" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ir a home</button>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
               </form>
             </div>
           </div>

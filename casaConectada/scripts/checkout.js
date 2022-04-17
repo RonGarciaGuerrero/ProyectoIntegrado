@@ -1,10 +1,29 @@
 $("document").ready( function () {
-     //Se va a llamar esta funcion en cada iteracion del ajax cuando añade un producto, asi se va a ir calculando el total
+
+  let myModal = new bootstrap.Modal(document.getElementById('myModal'));
+  let myModal2 = new bootstrap.Modal(document.getElementById('myModal2'));
+  //cuando se hace click en checkout ya no se puedemo dificar el producto
     $("form button[type='submit']").click(function(event){
       event.preventDefault();
       $("form").addClass("enviado");
+      
+      //calcular lista de productos a enviar a php (id y cantidad)
+      let idProductos=[];
+      let cantidadProductos=[];
+      
+      let carrito = localStorage.getItem('carrito');
+        
+      if (carrito){
+        let carritoJSON = JSON.parse(carrito);
+        let html = '';
+        for(const [key, value] of Object.entries(carritoJSON)){
+          idProductos.push(key);
+          cantidadProductos.push(value.cantidad);
+        }
+      }
+
       $.ajax({
-        type:"GET",
+        type:"POST",//Porque se estan modificando datos en la bbdd
         url: "../PHP/checkout.php",
         data: {'funcion':'guardarPedido',
                 "nombre":$('#firstName').val(),
@@ -12,12 +31,32 @@ $("document").ready( function () {
                 "email":$('#email').val(),
                 "direccion":$('#direccion').val(),
                 "cp":$('#cp').val(),
-                "provincia":$('#provincia').val()
-
+                "provincia":$('#provincia').val(),
+              "idProductos[]":idProductos,
+              "cantidadProductos[]":cantidadProductos  
+              //  "data":$.param({ "idProductos": idProductos, "cantidadProductos":cantidadProductos }, true)
               },
-        dataType: "text",
+        //traditional:"true",
+        dataType: "json",
         success : function(infoPedido){
           console.log(infoPedido);
+          if(!infoPedido.guardado){
+            
+            let ulErrores = $("#ulErrores");
+            let htmlErrores = "";
+            for(let i=0;i<infoPedido.errores.length;i++){
+              htmlErrores+=`<li>${infoPedido.errores[i]}</li>`;
+            }
+            ulErrores.html(htmlErrores);
+            myModal.show();
+
+          }else{
+            //el pedido se ha realizado correctamente y se ha confirma con el modal
+            $("#idPedidoConfirmado").html(infoPedido.idPedido);
+            console.log(infoPedido.idPedido);
+            myModal2.show();
+            localStorage.setItem('carrito','{}');//se borra el carrito
+          }
           
         },
         error : function(XHR, status){
