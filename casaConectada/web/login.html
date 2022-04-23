@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/styles.css" />
         <meta charset="UTF-8" />
-        <script type="text/javascript" src="../scripts/login.js"></script>
     </head>
     <body>
         <header>
@@ -29,40 +28,33 @@
               </nav>
           </header>
         <main>
-            <!-- <div class="" id="login">
-              <div class="row">
-                <div class="col">
-                  <label for="usuario">Usuario:</label><br/>
-                  <input type="text" id="usuario" required><br/>
-                  <label for="password">Contraseña</label><br/>
-                  <input type="password" id="password" required><br/><br/>
-                  <button id="iniciar">Iniciar</button>
-                </div>
-              </div>
-              <div id="errores"></div>
-            </div> -->
+            <!--  -->
+            
             <div class="my-3"></div>
             <div id="login">
-            <form action="./gestionarProductos.html" class="border border-2 border-warning rounded m-auto p-4 bg-light w-50">
+            <form action="../php/login.php" class="border border-2 border-warning rounded m-auto p-4 bg-light w-50">
               <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre de usuario:</label>
-                <input type="text" class="form-control" id="usuario" aria-describedby="emailHelp" required>
+                <input name="usuario" type="text" class="form-control" id="usuario" aria-describedby="emailHelp" required>
                 <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" required>
+                <input name="password" type="password" class="form-control" id="password" required>
               </div>
               <!-- <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
               </div> -->
-              <input id="iniciar" type="submit" class="btn btn-primary" value="Enviar">
-              <div id="errores"></div>
+              <input id="iniciar" type="submit" class="btn btn-primary" value="Iniciar Sesion">
+              <br><br>
+              <div id="errorusuario"><p>El usuario no existe</p></div>
+              <div id="noerror"><p>El usuario existe</p></div>
             </form>
+            
             </div>
             <div class="my-3"></div>
-
+            
 
 
         </main>

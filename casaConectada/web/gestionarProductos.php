@@ -1,3 +1,13 @@
+<?php 
+  //Se importa la clase usuario.
+  require_once(dirname(__FILE__).'/../PHP/usuarios.php');
+  session_start();
+  $usuario = $_SESSION['usuario'];
+  if($usuario == null){
+    header('Location: ../web/login.html?error=noautenticado');//se redirige a login
+    die();
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -10,8 +20,7 @@
         <script src="../scripts/jquery-3.6.0.js"></script>
         <script src="../scripts/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <script type="text/javascript" src="../scripts/objArrayProductos.js"></script>
-        <script ype="text/javascript" src="../scripts/gestionarProductos.js"></script>
+        
     </head>
     <body>
     
@@ -32,6 +41,9 @@
           </header>
         <main>
             <h2>Gestionar Productos</h2>
+            <?php 
+              print($usuario -> nombre . ' ' . $usuario -> apellidos);
+            ?>
             <div class="divAniadir"> <button class="btn btn-dark" id="botonAniadir">Añadir</button></div>
             <div style="clear: both; height: 10px;"></div>
             <div  class="container-fluid border border-dark rounded m-auto w-50 my-4 bg-warning p-2" id="formulario">
