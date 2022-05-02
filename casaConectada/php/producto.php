@@ -63,18 +63,89 @@ class Producto{
         return json_encode($result[0]);//el primer resultado
     }
 
-    // static function filtrarPorCategoria(nombreCategoria){
-    //     $sentencia = "SELECT distinct categoria FROM productos";
-    //     $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
-    //     $categorias = Array();
-    //     foreach($result as $cat){
-    //         array_push($categorias, $cat["categoria"]);
-    //     }
-    //     if(){
+    static function guardarProducto(){
+        $resultado=Array();
+        $errores=Array(); 
+        
+         
+        //aqui se hacen las validaciones del formulario, el trim elimina espacio sal inicio y al final de la cadena
 
-    //     }
-    //     return json_encode($categoria);
-    // }
+        if(!array_key_exists("nombre",$_REQUEST) || $_REQUEST['nombre'] == null || trim($_REQUEST['nombre'])== "" ){
+            array_push($errores,'El nombre es obligatorio');
+        }
+        
+        if(!array_key_exists("marca",$_REQUEST)|| $_REQUEST['marca'] == null || trim($_REQUEST['marca'])== "" ){
+            array_push($errores,'La marca es obligatoria');
+        }
+
+        if(!array_key_exists("categoria",$_REQUEST)|| $_REQUEST['categoria'] == null || trim($_REQUEST['categoria'])== "" ){
+            array_push($errores,'La categoria es obligatoria');
+        }
+
+        if(!array_key_exists("cantidad",$_REQUEST)|| $_REQUEST['cantidad'] == null || trim($_REQUEST['cantidad'])== "" ){
+            array_push($errores,'La cantidad son obligatorias');
+        }
+
+        if(!array_key_exists("resumen",$_REQUEST)|| $_REQUEST['resumen'] == null || trim($_REQUEST['resumen'])== "" ){
+            array_push($errores,'El resumen es obligatorio');
+        }
+
+        if(!array_key_exists("descripcion",$_REQUEST)|| $_REQUEST['descripcion'] == null || trim($_REQUEST['descripcion'])== "" ){
+            array_push($errores,'La descripcion es obligatoria');
+        }
+
+        if(!array_key_exists("precio",$_REQUEST)|| $_REQUEST['precio'] == null || trim($_REQUEST['precio'])== "" ){
+            array_push($errores,'El precio es obligatorio');
+        }else{
+            if($_REQUEST['precio']<0){
+                array_push($errores,'El precio no puede ser negativo');   
+            }
+        }
+
+        //una vez terminadas las validaciones o se guarda el producto o se devuelven errores
+        if(count($errores)==0){
+            
+            //como no hay errores deberiamos guardar y meter en el resultado el id del producto
+            $resultadoBBDD=Producto::guardarProductoBbdd();
+            $resultado=array_merge($resultadoBBDD,$resultado);
+        }else{
+            $resultado['guardado']=false;
+            $resultado['errores']=$errores;
+            
+
+        }
+        return json_encode($resultado);
+    }
+
+    static function guardarProductoBbdd(){
+        $errores=[];//se crea un array que contendrá los errores
+
+        $nombre=$_REQUEST['nombre'];
+        $marca=$_REQUEST['marca'];
+        $categoria=$_REQUEST['categoria'];
+        $unidades=$_REQUEST['cantidad'];
+        $resumen=$_REQUEST['resumen'];
+        $descripcion=$_REQUEST['descripcion'];
+        $precio=$_REQUEST['precio'];
+        $id = null;
+        try{//se meten los datos del producto en la bbdd
+            $sentencia = " INSERT INTO productos (id,nombre,marca,categoria,unidades,resumen,descripcion,precio) VALUES ('','$nombre','$marca','$categoria','$unidades','$resumen','$descripcion','$precio')";
+
+            $id=DB::insert($sentencia);
+            
+
+            
+
+        }catch(Exception $e){
+            $errores[]=$e->getMessage();//añado el mensaje del error
+        }
+        //se imprime un objeto json haya errores o no
+        if(sizeof( $errores) > 0){
+            return array('guardado'=>false,'mensaje'=>$errores);
+        }else{
+            return array('guardado'=>true,'id'=>$id);
+        }
+    }
 
 }
 if($_REQUEST['funcion']=='obtenerCategorias'){
@@ -85,6 +156,9 @@ if($_REQUEST['funcion']=='obtenerProductos'){
 }
 if($_REQUEST['funcion']=='obtenerDetalleProducto'){
     print(Producto::obtenerDetalleProducto());//imprime un producto identificado por id
+}
+if($_REQUEST['funcion']=='guardarProducto'){
+    print(Producto::guardarProducto());
 }
 
 ?>

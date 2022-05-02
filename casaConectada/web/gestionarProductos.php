@@ -19,6 +19,7 @@
         <meta charset="UTF-8" />
         <script src="../scripts/jquery-3.6.0.js"></script>
         <script src="../scripts/bootstrap.bundle.min.js"></script>
+        <script src="../scripts/gestionarProductos.js"></script>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         
     </head>
@@ -97,7 +98,23 @@
                 
             </div>
             
-            <div class="table-responsive-sm" id="tablaProductos"></div>
+            <div class="table-responsive" id="tablaProductos">
+              <table class="table table-striped table-hover table-bordered" >
+                <thead>
+                  <th>Id</th>
+                  <th>Nombre</th>
+                  <th>Marca</th>
+                  <th>Categoria</th>
+                  <th>Unidades</th>
+                  <th>Resumen</th>                  
+                  <th>Descripción</th>
+                  <th>Precio</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+            </div>
             <div style="height: 10px;"></div>        
         </main>
         <!-- Footer responsive con bootstrap -->

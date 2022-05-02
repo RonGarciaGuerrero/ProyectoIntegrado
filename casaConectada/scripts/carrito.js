@@ -16,8 +16,8 @@ $("document").ready( function () {
             let carritoJSON = JSON.parse(carrito);
             let html = '';
             for(const [key, value] of Object.entries(carritoJSON)){
-                // guardar solo codigo de producto y cantidad. el html del carrito debe leer de local sotorage y debe hacer una llamada ajax a un php al que le va a pasar lo que habia en el local storage y le va a devolver el detalle del carrito con los precios, la foto etc
-                //el key es el codigo del producto con ese id se coje todo de
+                // guardar solo codigo de producto y cantidad. el html del carrito debe leer de localStorage y debe hacer una llamada ajax a un php al que le va a pasar lo que habia en el local storage y le va a devolver el detalle del carrito con los precios, la foto etc
+                //el key es el codigo del producto con ese id se coge todo de
                 
                 html+= `<tr class="filaProducto" id="prod${key}"><td><img src="" height="100"></td><td></td><td class="text-end">${value.cantidad}</td><td class="text-end"></td><td class="text-end"></td></tr>`;
             }

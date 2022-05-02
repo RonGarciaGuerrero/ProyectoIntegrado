@@ -16,8 +16,17 @@ lista casa conectada:
 		- Backend para agregar el pedido
 		- Backend para eliminar el pedido
 		- Diseñar y crear la(s) tabla de pedido(s)
+***********************************************
+Pendiente:
+Sesion
+en los campos de entrada del formulario el name indica con que nombre se enviara ese valor en la peticion http
+para leer ese valor en el php $_request[name]
+
+en la pagina de login, si llega en la url el parametro noexiste mostrar un error
+
+***********************************************
 	
-2- Front
+2- Front (Esta casi todo listo)
 	Validar campos del formulario del checkout
 	Hacer que la tabla del carrito sea responsive 	
 	Guardar los datos del pedido, tras la compra, guardar el estado y los detalles (hacer el backend) el php recibe todos los datos del formulario del pedido y hacer un insert (crear la tabla en la bbdd)
@@ -37,3 +46,4 @@ HAY QUE AÑADIR UNA RESTRICCION ENL ABBDD PAAR QUE EN LA COLUMNA CANTIDAD TIENE 
 Enviar correo de confirmacion 
 
 ********************
+falta eliminar y editar en el gestionar productos
