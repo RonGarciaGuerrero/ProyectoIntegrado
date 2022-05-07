@@ -147,6 +147,13 @@ class Producto{
         }
     }
 
+    static function eliminarProductoBbdd(){
+        $idEliminar = $_REQUEST['idEliminar'];
+        $sentencia = "DELETE FROM productos WHERE id=$idEliminar";
+        DB::query($sentencia);
+
+    }
+
 }
 if($_REQUEST['funcion']=='obtenerCategorias'){
     print(Producto::obtenerCategorias());
@@ -159,6 +166,9 @@ if($_REQUEST['funcion']=='obtenerDetalleProducto'){
 }
 if($_REQUEST['funcion']=='guardarProducto'){
     print(Producto::guardarProducto());
+}
+if($_REQUEST['funcion']=='eliminarProductoBbdd'){
+    Producto::eliminarProductoBbdd();
 }
 
 ?>

@@ -109,12 +109,40 @@
                   <th>Resumen</th>                  
                   <th>Descripción</th>
                   <th>Precio</th>
+                  <th>Acciones</th>
                 </thead>
                 <tbody>
 
                 </tbody>
               </table>
             </div>
+            
+            <!-- Inserto el modal que alerta antes de eliminar un producto -->
+            <div id="myModal" class="modal" tabindex="-1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Eliminar producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>¿Esta seguro de eliminar el producto con id <span id="idProducto"></span> de la BBDD?</p>
+                        <!-- <ul id="ulErrores"> -->
+                          
+                        </ul>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button id="confirmarEliminar" type="button" class="btn btn-primary" data-bs-dismiss="modal">Eliminar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                
+                <!-- Fin modal -->
+
+
             <div style="height: 10px;"></div>        
         </main>
         <!-- Footer responsive con bootstrap -->

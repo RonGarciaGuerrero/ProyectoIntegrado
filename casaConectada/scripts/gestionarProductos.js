@@ -1,9 +1,11 @@
 //Función para mostrar los objetos producto 
 var rutaImagenes = "/PI/casaConectada/img/";
+//esta pendiente de solucionar lo de mostrar imagenes
+
 function crearTablaProductos(productos,prefijo) {
 var cadena = "";
-//Itero entre cada objeto producto
 
+//Itero entre cada objeto producto
 for(var i=0; i<productos.length;i++){
     var prod = productos[i];
     cadena += `<tr>
@@ -15,10 +17,19 @@ for(var i=0; i<productos.length;i++){
         <td>${prod.resumen}</td>
         <td>${prod.descripcion}</td>
         <td>${prod.precio}</td>
+        <td><button id="eliminar_${prod.id}" type="button" class="botonEliminar btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal">Eliminar</button></td>
+
     </tr>`;
 }  
 return cadena;//devuelve una cadena con el html que pinta cada producto
 }
+
+//Aqui se empieza con la funcion para el botonEliminar
+function borrarFila(){
+     
+}
+$(".botonEliminar").click(borrarFila);
+
 
 function pintarListaEntera(){
     $.ajax({
@@ -28,19 +39,42 @@ function pintarListaEntera(){
         dataType: "JSON",
         success : function(infoProductos){
             //console.log(infoProductos);
+            //a la variable html se le asigna el resultado de evaluar la funcion crearTablaProductos con el parametro que son todos los productos en formato JSON
             let html = crearTablaProductos(infoProductos);
             $('#tablaProductos tbody').html(html);
-
             
+            //cuando se haga click a un boton eliminar se debera meter en el modal el id del producto que se intenta eliminar
+            $('.botonEliminar').click(function(){
+                //alert('se ha hecho click');
+                $('#idProducto').html(this.id.substring(9));
+            });
         },
         error : function(XHR, status){
              alert("No se ha podido conectar con la base de datos para obtener los productos");
         }
     })
 }
-
+//aqui se pinta la tabla de productos
 $("document").ready( function () {
     pintarListaEntera();
+    $('#confirmarEliminar').click(function(){
+        $.ajax({
+            type:"GET",
+            url: "../PHP/producto.php",
+            data: {'funcion':'eliminarProductoBbdd',
+        'idEliminar':$('#idProducto').text()},//lo que se pasa como data es lo que en el PHP se lee en el REQUEST 
+            dataType: "text",//en este caso el tipo no es JSON sino text porque no devuelve nada
+            success : function(infoProductos){
+                pintarListaEntera();
+            },
+            error : function(XHR, status){
+                 alert("No se ha podido conectar con la base de datos para obtener los productos");
+            }
+        })
+    }
+        
+    );
+
 
     //funcion limpiar campos /LIMPIAR CAMPOS .VALUE VACIO
     function limpiarCampos(){
