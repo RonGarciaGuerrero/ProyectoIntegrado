@@ -103,10 +103,11 @@ class Pedido{
         $email=$_REQUEST['email'];
         $direccion=$_REQUEST['direccion'];
         $cp=$_REQUEST['cp'];
+        $provincia=$_REQUEST['provincia'];
         $precio_envio=5;//de momento se pone el precio de envío directamente
         $idPedido = null;
         try{//se meten los datos del pedido en la bbdd
-            $sentencia = " INSERT INTO pedidos (id,nombre,apellidos,email,direccion,codigo_postal,precio_envio) VALUES ('','$nombre','$apellidos','$email','$direccion','$cp','$precio_envio')";
+            $sentencia = " INSERT INTO pedidos (id,nombre,apellidos,email,direccion,codigo_postal,provincia,precio_envio) VALUES ('','$nombre','$apellidos','$email','$direccion','$cp','$provincia','$precio_envio')";
 
             $idPedido=DB::insert($sentencia);
             
@@ -165,16 +166,24 @@ class Pedido{
     
     }
 
+    static function obtenerPedido($idPedido){
+        $sentencia = "SELECT * FROM pedidos WHERE id=$idPedido";
+        $result = mysqli_fetch_array(DB::query($sentencia),MYSQLI_ASSOC);
+        return new Pedido($result['id'],$result['nombre'],$result['apellidos'],$result['email'],$result['direccion'],$result['codigo_postal'],$result['provincia'],$result['precio_envio']);
+
+    }
+
 }
-if($_REQUEST['funcion']=='guardarPedido'){
+//cuando esta clase se usa directamente sin llamada AJAX los if dan error porque el parametro funcion no esta en el request, para eso se añade el array_key_exist 
+if(array_key_exists('funcion',$_REQUEST) && $_REQUEST['funcion']=='guardarPedido'){
     print(Pedido::guardarPedido());
 }
 
-if($_REQUEST['funcion']=='mostrarPedidos'){
+if(array_key_exists('funcion',$_REQUEST) && $_REQUEST['funcion']=='mostrarPedidos'){
     print(Pedido::mostrarPedidos());
 }
 
-if($_REQUEST['funcion']=='eliminarPedidoBbdd'){
+if(array_key_exists('funcion',$_REQUEST) && $_REQUEST['funcion']=='eliminarPedidoBbdd'){
     print(Pedido::eliminarPedidoBbdd());
 }
 
