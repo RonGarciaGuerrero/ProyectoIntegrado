@@ -138,11 +138,44 @@ class Pedido{
         }
     }
 
+    static function mostrarPedidos(){
+        
+        
+        $sentencia = "SELECT * FROM pedidos";
+        
+        
+
+        $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
+        $pedidos = Array();
+        foreach($result as $ped){
+            array_push($pedidos, new Pedido($ped["id"],$ped["nombre"],$ped["apellidos"],$ped["email"],$ped["direccion"],$ped["codigo_postal"],$ped["provincia"],$ped["precio_envio"]));
+        }
+        return json_encode($pedidos);
+    
+    }
+
+    static function eliminarPedidoBbdd(){
+        $idEliminar = $_REQUEST['idEliminar'];
+        
+        $sentencia = "DELETE FROM pedidos_productos WHERE id_pedido=$idEliminar";
+        DB::query($sentencia);
+        
+        $sentencia = "DELETE FROM pedidos WHERE id=$idEliminar";
+        DB::query($sentencia);
+    
+    }
 
 }
 if($_REQUEST['funcion']=='guardarPedido'){
     print(Pedido::guardarPedido());
 }
 
+if($_REQUEST['funcion']=='mostrarPedidos'){
+    print(Pedido::mostrarPedidos());
+}
+
+if($_REQUEST['funcion']=='eliminarPedidoBbdd'){
+    print(Pedido::eliminarPedidoBbdd());
+}
 
 ?>
