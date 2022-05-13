@@ -53,6 +53,6 @@ crear un detallepedido.php que sea la pagian q que muestra el detalledel product
 ********************
 
 ene l detalle del pedido el numero de la provincia hay que transformarla al nombre de la provincia
-ademas hay que solucionar que se esta insertando cero como el nombre de la provincia
+
 rellenar tabla con productos del pedido
 revisar el bardge en las paginas nuevas

@@ -47,7 +47,6 @@ $("document").ready( function () {
                             $(fila).find("td:nth-of-type(5)").html(cantidad*precio+"€");
 
                             calcularTotal();
-
                         },
                         error : function(XHR, status){
                             alert("No se ha podido conectar con la base de datos para obtener el detalle del producto");
@@ -55,7 +54,6 @@ $("document").ready( function () {
                    });
                 }
             );
-
         }
 
     $('#vaciarCarrito').click(function(){
@@ -63,5 +61,30 @@ $("document").ready( function () {
         localStorage.setItem('carrito','{}');
         calcularTotal();
         actualizarBadge();
-    });    
+    });
+    
+    // evento para redirigir a la página del checkout solo si hay algún producto 
+    $('#pagar').click(function(){
+        //primero se intenta obtener el carrito del local storage
+        let carrito = localStorage.getItem('carrito');
+
+        // poner un evento on click (dentro de este evento) si el carrito existe y tiene al menos un producto entonces vamos a checkout, sino no se redirije y se muestra error o modal
+        //si el carrito no existe se crea vacío
+        if (!carrito){
+            localStorage.setItem('carrito', '{}');//diccionario de productos, la clave es el id del producto y el valor son los datos de producto y la cantidad
+            carrito={};
+        }else{
+            carrito=JSON.parse(carrito);
+        }
+        
+        var size = Object.keys(carrito).length;
+        // alert(size);
+        if(carrito && size>0 ){
+            window.location.href="./checkout.html";
+        }else{
+            alert('El carrito está vacío. Añada primero productos al carrito antes de intentar pagar.');
+        }
+
+
+    })
 });

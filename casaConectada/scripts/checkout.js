@@ -102,7 +102,7 @@ $("document").ready( function () {
           
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (Euros)</span>
-            <strong id="total">20€</strong>
+            <strong id="total"></strong>
           </li>`;
             $('#listaProductos').html(html);
             $(".filaProducto").each(
