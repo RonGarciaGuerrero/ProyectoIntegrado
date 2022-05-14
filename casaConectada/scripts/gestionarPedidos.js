@@ -9,14 +9,14 @@ var cadena = "";
 for(var i=0; i<pedidos.length;i++){
     var ped = pedidos[i];
     cadena += `<tr>
-        <td>${ped.id}</td>
+        <td><a href="./mostrarDetallePedido.php?idPedido=${ped.id}"> ${ped.id}</a></td>
         <td>${ped.nombre}</td>
         <td>${ped.apellidos}</td>
         <td>${ped.email}</td>
         <td>${ped.direccion}</td>
-        <td>${ped.codigo_postal}</td>
+        <td>${ped.cp}</td>
         <td>${ped.provincia}</td>
-        <td>${ped.precio_envio}</td>
+        <td>${ped.precioEnvio}</td>
         <td><button id="eliminar_${ped.id}" type="button" class="botonEliminar btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal">Eliminar</button></td>
 
     </tr>`;
@@ -54,7 +54,8 @@ function pintarListaEntera(){
         }
     })
 }
-//aqui se pinta la tabla de productos
+
+//aqui se pinta la tabla de pedidos
 $("document").ready( function () {
     pintarListaEntera();
     $('#confirmarEliminar').click(function(){
@@ -68,7 +69,7 @@ $("document").ready( function () {
                 pintarListaEntera();
             },
             error : function(XHR, status){
-                 alert("No se ha podido conectar con la base de datos para obtener los productos");
+                 alert("No se ha podido conectar con la base de datos para obtener los pedidos");
             }
         })
     }

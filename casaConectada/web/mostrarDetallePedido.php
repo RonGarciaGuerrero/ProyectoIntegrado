@@ -126,7 +126,7 @@
               </table>
             </div>
             
-            <button href="./gestionarPedidos.php" type="button" class="mx-4 btn btn-outline-primary">Volver a Gestionar pedidos </button>
+            <a href="./gestionarPedidos.php" type="button" class="mx-4 btn btn-outline-primary">Volver a Gestionar pedidos </a>
 
             <div style="height: 10px;"></div>        
         </main>

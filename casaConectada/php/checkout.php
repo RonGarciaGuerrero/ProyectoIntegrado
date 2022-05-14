@@ -153,7 +153,7 @@ class Pedido{
         $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
         $pedidos = Array();
         foreach($result as $ped){
-            array_push($pedidos, new Pedido($ped["id"],$ped["nombre"],$ped["apellidos"],$ped["email"],$ped["direccion"],$ped["codigo_postal"],$ped["provincia"],$ped["precio_envio"]));
+            array_push($pedidos, new Pedido($ped["id"],$ped["nombre"],$ped["apellidos"],$ped["email"],$ped["direccion"],$ped["codigo_postal"],$ped["provincia"],$ped["precio_envio"],$ped['estatus'],null));
         }
         return json_encode($pedidos);
     
