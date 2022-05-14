@@ -13,8 +13,10 @@ class Pedido{
     public $cp;
     public $provincia;
     public $precioEnvio;
+    public $estatus;
+    public $productos;
 
-    function __construct($id,$nombre,$apellidos,$email,$direccion,$cp,$provincia,$precioEnvio){
+    function __construct($id,$nombre,$apellidos,$email,$direccion,$cp,$provincia,$precioEnvio, $estatus, $productos){
 
         $this->id=$id;
         $this->nombre=$nombre;
@@ -24,6 +26,8 @@ class Pedido{
         $this->cp=$cp;
         $this->provincia=$provincia;
         $this->precioEnvio=$precioEnvio;
+        $this->estatus = $estatus;
+        $this->productos=$productos;
 
     }
 
@@ -169,11 +173,46 @@ class Pedido{
     static function obtenerPedido($idPedido){
         $sentencia = "SELECT * FROM pedidos WHERE id=$idPedido";
         $result = mysqli_fetch_array(DB::query($sentencia),MYSQLI_ASSOC);
-        return new Pedido($result['id'],$result['nombre'],$result['apellidos'],$result['email'],$result['direccion'],$result['codigo_postal'],$result['provincia'],$result['precio_envio']);
+        $productos = Array();
+
+        $sentenciaDetalle = "SELECT * FROM pedidos_productos JOIN productos ON pedidos_productos.id_producto = productos.id WHERE pedidos_productos.id_pedido=$idPedido";
+
+        $queryDetalle = DB::query($sentenciaDetalle);
+        while( $resultDetalle = mysqli_fetch_array($queryDetalle, MYSQLI_ASSOC)){
+            array_push($productos, $resultDetalle);
+        }
+
+        return new Pedido($result['id'],$result['nombre'],$result['apellidos'],$result['email'],$result['direccion'],$result['codigo_postal'],$result['provincia'],$result['precio_envio'], $result['estatus'], $productos);
 
     }
 
+    static function actualizarEstado(){
+        $errores=[];//se crea un array que contendrá los errores
+        $estatus=$_REQUEST['estatus'];
+        $id=$_REQUEST['id'];
+        
+        try{//se meten los datos del pedido en la bbdd
+            $sentencia = "UPDATE pedidos SET estatus = '$estatus' WHERE id = $id";
+    
+            DB::query($sentencia);
+    
+        }catch(Exception $e){
+            $errores[]=$e->getMessage();//añado el mensaje del error
+        }
+
+        //se imprime un objeto json haya errores o no
+        if(sizeof( $errores) > 0){
+            return json_encode(array('guardado'=>false,'mensaje'=>$errores));
+        }else{
+            return json_encode(array('guardado'=>true,'idPedido'=>$id));
+        }
+    }
+
 }
+
+
+
+
 //cuando esta clase se usa directamente sin llamada AJAX los if dan error porque el parametro funcion no esta en el request, para eso se añade el array_key_exist 
 if(array_key_exists('funcion',$_REQUEST) && $_REQUEST['funcion']=='guardarPedido'){
     print(Pedido::guardarPedido());
@@ -185,6 +224,11 @@ if(array_key_exists('funcion',$_REQUEST) && $_REQUEST['funcion']=='mostrarPedido
 
 if(array_key_exists('funcion',$_REQUEST) && $_REQUEST['funcion']=='eliminarPedidoBbdd'){
     print(Pedido::eliminarPedidoBbdd());
+}
+
+
+if(array_key_exists('funcion',$_REQUEST) && $_REQUEST['funcion']=='actualizar'){
+    print(Pedido::actualizarEstado());
 }
 
 ?>

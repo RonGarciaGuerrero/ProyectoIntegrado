@@ -11,6 +11,10 @@
   }
 
   $idPedido = $_REQUEST['idPedido'];
+  if($idPedido == null){
+    header('Location: ../web/login.html?error=noautenticado');//se redirige a login
+    die();
+  }
   $pedido = Pedido::obtenerPedido($idPedido); 
 ?>
 <!DOCTYPE html>
@@ -24,7 +28,7 @@
         <meta charset="UTF-8" />
         <script src="../scripts/jquery-3.6.0.js"></script>
         <script src="../scripts/bootstrap.bundle.min.js"></script>
-        <!-- <script src="../scripts/gestionarProductos.js"></script> -->
+        <script src="../scripts/gestionarPedidosAdmin.js"></script>
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         
     </head>
@@ -46,13 +50,27 @@
               </nav>
           </header>
         <main>
-            <h2>Detalle del Pedido</h2>
+            <h2 class="px-4">Detalle del Pedido</h2>
+            <h4 class="px-4">Usuario:</h4>
+            <h6 class="px-4">
             <?php 
               print($usuario -> nombre . ' ' . $usuario -> apellidos);
             ?>
-            
+            </h6>
             <!-- Aqui muestro los datos del cliente -->
-            <div class="table-responsive" id="tablaCliente">
+            <div class="table-responsive px-4" id="tablaCliente">
+              Estatus: 
+              <form id="estatus-pedido">
+                <input type="hidden" id="idpedido" value="<?php echo $idPedido?>">
+
+                <select class="form-select form-select-lg w-25" id="estatus">
+                  <option value="CREADO" <?php if($pedido -> estatus == "CREADO"){ echo "selected"; }?>>Pedido creado</option>
+                  <option value="PAGADO" <?php if($pedido -> estatus == "PAGADO"){ echo "selected"; }?>>Pedido pagado y listo para procesar</option>
+                  <option value="ENVIADO" <?php if($pedido -> estatus == "ENVIADO"){ echo "selected"; }?>>Pedido enviado al cliente</option>
+                  <option value="ENTREGADO" <?php if($pedido -> estatus == "ENTREGADO"){ echo "selected";}?>>Pedido entregado al cliente</option>
+                </select>
+              <button class="my-4 btn btn-outline-primary" type="submit">Actualizar estado</button>
+              </form>
               <table class="table table-striped table-hover table-bordered" >
                 <thead>
                   <th>Id</th>
@@ -66,21 +84,21 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><?php print($pedido -> id)?></td>ç
+                    <td><?php print($pedido -> id)?></td>
                     <td><?php print($pedido -> nombre)?></td>
                     <td><?php print($pedido -> apellidos)?></td>
                     <td><?php print($pedido -> email)?></td>
                     <td><?php print($pedido -> direccion)?></td>
                     <td><?php print($pedido -> cp)?></td>
                     <td><?php print($pedido -> provincia)?></td>
-                    <td><?php print($pedido -> precioEnvio)?></td>
+                    <td class="text-end"><?php print($pedido -> precioEnvio)?>€</td>
                   </tr>
 
                 </tbody>
               </table>
             </div>
             <!-- Aqui muestro los productos -->
-            <div class="table-responsive" id="tablaProductos">
+            <div class="table-responsive px-4" id="tablaProductos">
               <table class="table table-striped table-hover table-bordered" >
                 <thead>
                   <th>Id</th>
@@ -93,12 +111,22 @@
                   <th>Precio</th>
                 </thead>
                 <tbody>
-
+                  <?php foreach($pedido -> productos as $item){ ?>
+                    <tr>
+                      <td><?php print($item['id_producto'])?></td>
+                      <td><?php print($item['nombre'])?></td>
+                      <td><?php print($item['marca'])?></td>
+                      <td><?php print($item['categoria'])?></td>
+                      <td class="text-end"><?php print($item['cantidad'])?></td>
+                      <td class="text-end"><?php print($item['precio_unitario'])?>€</td>
+                      
+                    </tr>
+                  <?php } ?>
                 </tbody>
               </table>
             </div>
             
-            <button href="./gestionarPedidos.php" type="button" class="btn btn-outline-primary">Volver a Gestionar pedidos </button>
+            <button href="./gestionarPedidos.php" type="button" class="mx-4 btn btn-outline-primary">Volver a Gestionar pedidos </button>
 
             <div style="height: 10px;"></div>        
         </main>
