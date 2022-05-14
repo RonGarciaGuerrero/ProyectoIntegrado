@@ -9,8 +9,8 @@ session_start();
 // $_SESSION["newsession"]=$value;
 $usuario=$_REQUEST["usuario"];
 $contrasena=$_REQUEST["password"];
-print("El usuario es: ".$usuario);
-print("La contraseña es: ".$contrasena);
+// print("El usuario es: ".$usuario);
+// print("La contraseña es: ".$contrasena);
 // intentar recuperar de la bbdd un usuario cuyo nombre de usuario sea $usuario y cuya contraseña sea $contrasena 
 $objUsuario = Usuario::obtenerUsuario();
 
@@ -20,7 +20,7 @@ if($objUsuario == null){
 }else{
     print("el usuario si existe");
     $_SESSION['usuario']=$objUsuario;
-    header('Location: ../web/gestionarProductos.php');
+    header('Location: ../web/admin.php');
 }
 
 ?>

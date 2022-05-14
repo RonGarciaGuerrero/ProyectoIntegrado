@@ -16,7 +16,7 @@ for(var i=0; i<pedidos.length;i++){
         <td>${ped.direccion}</td>
         <td>${ped.cp}</td>
         <td>${ped.provincia}</td>
-        <td>${ped.precioEnvio}</td>
+        <td class="text-end">${ped.precioEnvio}€</td>
         <td><button id="eliminar_${ped.id}" type="button" class="botonEliminar btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal">Eliminar</button></td>
 
     </tr>`;

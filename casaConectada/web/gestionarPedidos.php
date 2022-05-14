@@ -40,11 +40,14 @@
                 </div>
               </nav>
           </header>
-        <main>
+        <main class="mx-4">
             <h2>Gestionar Pedidos</h2>
-            <?php 
-              print($usuario -> nombre . ' ' . $usuario -> apellidos);
-            ?>
+            <h4 class="py-1">Usuario:</h4>
+            <h6 class="py-1">
+              <?php 
+                print($usuario -> nombre . ' ' . $usuario -> apellidos);
+              ?>
+            </h6>
             <div class="divAniadir"> <button class="btn btn-dark" id="botonAniadir">Añadir</button></div>
             <div style="clear: both; height: 10px;"></div>
             <div  class="container-fluid border border-dark rounded m-auto w-50 my-4 bg-warning p-2" id="formulario">
@@ -112,7 +115,7 @@
                   <th>Acciones</th>
                 </thead>
                 <tbody>
-
+                  <!-- este tbody se pinta con AJAX en  -->
                 </tbody>
               </table>
             </div>
