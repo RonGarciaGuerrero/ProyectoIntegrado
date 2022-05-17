@@ -15,12 +15,14 @@ $contrasena=$_REQUEST["password"];
 $objUsuario = Usuario::obtenerUsuario();
 
 if($objUsuario == null){
-    print("el usuario no existe");
+    // print("el usuario no existe");
     header('Location: ../web/login.html?error=noexiste');
+    //aqui se redirecciona a la pagina de logín con un parametro
 }else{
-    print("el usuario si existe");
+    // print("el usuario si existe");
     $_SESSION['usuario']=$objUsuario;
     header('Location: ../web/admin.php');
+    //cuando se valida el usuario y contraseña se redirecciona a la pagina de bienvenida de administración
 }
 
 ?>
