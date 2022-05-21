@@ -39,7 +39,8 @@
           </header>
         <main class="m-4"> 
             <!--  -->
-          <h2>Bienvenido a Administración de Casa Conectada</h2>
+          <div class="container-fluid">
+            <h2>Bienvenido a Administración de Casa Conectada</h2>
             <h4 class="py-1">Usuario:</h4>
             <h6 class="py-1">
               <?php 
@@ -57,6 +58,8 @@
                 </div>
               </div>
             </div>
+          </div>  
+          
             
 
         </main>

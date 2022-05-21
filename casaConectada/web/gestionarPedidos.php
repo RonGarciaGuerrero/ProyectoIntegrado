@@ -52,6 +52,13 @@
             <div style="clear: both; height: 10px;"></div>
             <div  class="container-fluid border border-dark rounded m-auto w-50 my-4 bg-warning p-2" id="formulario">
                 <h3 class="text-center">Añadir Productos</h3>
+                <form>
+                  <div>
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" type="text" required>
+                  </div>
+                </form>
+                
                 <table class="tablaAniadir">
                     <tr>
                         <td><label for="nombre">Nombre</label></td>

@@ -47,12 +47,12 @@
             ?>
             <div class="divAniadir"> <button class="btn btn-dark" id="botonAniadir">Añadir</button></div>
             <div style="clear: both; height: 10px;"></div>
-            <div  class="container-fluid border border-dark rounded m-auto w-50 my-4 bg-warning p-2" id="formulario">
+            <div  class="container-fluid border border-dark m-auto w-50 my-4 bg-warning p-2 bg-opacity-25" id="formulario">
                 <h3 class="text-center">Añadir Productos</h3>
                 <table class="tablaAniadir">
                     <tr>
                         <td><label for="nombre">Nombre</label></td>
-                        <td><input id="nombre" type="text" required></td> 
+                        <td><input class="w-100" id="nombre" type="text" required></td> 
                     </tr>
                     <tr>
                         <td><label for="marca">Marca</label></td>
