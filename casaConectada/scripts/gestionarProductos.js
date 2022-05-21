@@ -100,7 +100,9 @@ $("document").ready( function () {
         $("#botonAniadir").fadeIn();
     });
 
-    $("#aceptar").click(function(){
+    $("form.tablaAniadir").submit(function(e){
+
+        e.preventDefault();
         var errores =[];
         if($('#nombre').val().length==0){
             errores.push('El nombre es obligatorio');
@@ -127,23 +129,41 @@ $("document").ready( function () {
         if($('#precio').val().length==0){
             errores.push('El precio es obligatoria');
         }
+
+        if($('#file')[0].files.length!==3){
+            errores.push('debe adjuntar tres fotos para el producto');
+        }
+
         if(errores.length==0){
+
+            var fd = new FormData();
+            fd.append('nombre', $('#nombre').val());
+            fd.append('marca', $('#marca').val());
+            fd.append('categoria', $('#categoria').val());
+            fd.append('cantidad', $('#cantidad').val());
+            fd.append('precio', $('#precio').val());
+            fd.append('descripcion', $('#descripcion').val());
+            fd.append('resumen', $('#resumen').val());
+            fd.append('funcion', 'guardarProducto');
+
+            var files = $('#file')[0].files;
+
+            fd.append('file1',files[0]);
+            fd.append('file2',files[1]);
+            fd.append('file3',files[2]);
+
             $.ajax({
                 type:"POST",//Porque se estan modificando datos en la bbdd
                 url: "../PHP/producto.php",
-                data: {'funcion':'guardarProducto',
-                        "nombre":$('#nombre').val(),
-                        "marca":$('#marca').val(),
-                        "categoria":$('#categoria').val(),
-                        "cantidad":$('#cantidad').val(),
-                        "resumen":$('#resumen').val(),
-                        "descripcion":$('#descripcion').val(),
-                        "precio":$('#precio').val()
-                      },
+                data: fd,
                 //traditional:"true",
-                dataType: "json",
-                success : function(infoProducto){
-                  console.log(infoProducto);
+                //dataType: "json",
+                contentType: false,
+              processData: false,
+                success : function(response){
+                    console.log(response);
+                    const infoProducto = JSON.parse(response);
+                  
                   if(!infoProducto.guardado){
                     
                     let errores = $("#errores");
@@ -182,6 +202,7 @@ $("document").ready( function () {
 
 
         }else{
+            e.preventDefault();
             var htmlErrores='<p>El formulario tiene errores: </p><ul>';
             for(var i=0;i<errores.length;i++){
                 htmlErrores += 

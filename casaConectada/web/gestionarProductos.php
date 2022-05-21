@@ -47,7 +47,43 @@
             ?>
             <div class="divAniadir"> <button class="btn btn-dark" id="botonAniadir">Añadir</button></div>
             <div style="clear: both; height: 10px;"></div>
-            <div  class="container-fluid border border-dark m-auto w-50 my-4 bg-warning p-2 bg-opacity-25" id="formulario">
+            
+            <div class="container-fluid border border-dark m-auto my-4 bg-warning p-2 bg-opacity-25" id="formulario">
+              <h3 class="text-center">Añadir Productos</h3>
+              <form class="tablaAniadir" enctype="multipart/form-data" >
+                    <div class="mb-3">
+                      <label class="form-label" for="nombre">Nombre</label>
+                      <input class="form-control" id="nombre" name="nombre" type="text" required>
+                      <label class="form-label" for="marca">Marca</label>
+                      <input class="form-control" id="marca" name="marca" type="text" required>
+                      <label class="form-label" for="categoria">Categoria</label>
+                      <select class="form-select" aria-label="Default select example" name="categoria" id="categoria">
+                        <option value="">-Selecionar-</option>
+                        <option value="botones">Botones</option>
+                        <option value="luces">Luces</option>
+                        <option value="aires acondicionados">Aires Acondicionados</option>
+                        <option value="cerraduras">Cerraduras</option>
+                      </select>
+                      <label class="form-label" for="cantidad">Cantidad</label>
+                      <input class="form-control" id="cantidad" type="number" name="cantidad" required min="0">
+                      <label class="form-label" for="precio">Precio</label>
+                      <input class="form-control" name="precio" id="precio" type="number" required min="0">
+                      <label class="form-label" for="resumen">Resumen</label>
+                      <input class="form-control" id="resumen" name="resumen" type="text" required maxlength="500">
+                      <label class="form-label" for="file">Foto</label>
+                      <input class="form-control" id="file" name="file" type="file" multiple>
+                      <label class="form-label" for="descripcion">Descripción</label>
+                      <textarea class="form-control" name="descripcion" placeholder="Escribe aqui la descripción" id="descripcion" rows="2" cols="23" required></textarea> 
+                      <button class="btn btn-outline-dark" id="cancelar">Cancelar</button>&nbsp;<button class="btn btn-outline-dark" id="aceptar">Aceptar</button> <br/>
+                      <div id="errores"></div>
+
+                    </div>
+              </form>
+
+            </div>
+            
+            
+            <!-- <div  class="container-fluid border border-dark m-auto w-50 my-4 bg-warning p-2 bg-opacity-25" id="formulario">
                 <h3 class="text-center">Añadir Productos</h3>
                 <table class="tablaAniadir">
                     <tr>
@@ -96,7 +132,7 @@
                 </table>
                 <div id="errores"></div>
                 
-            </div>
+            </div> -->
             
             <div class="table-responsive" id="tablaProductos">
               <table class="table table-striped table-hover table-bordered" >

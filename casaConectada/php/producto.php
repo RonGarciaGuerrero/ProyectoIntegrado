@@ -102,6 +102,10 @@ class Producto{
             }
         }
 
+        /*if(!array_key_exists("file1",$_REQUEST)){
+            array_push($errores,'Debe agregar tres fotos');
+        }*/
+
         //una vez terminadas las validaciones o se guarda el producto o se devuelven errores
         if(count($errores)==0){
             
@@ -114,6 +118,8 @@ class Producto{
             
 
         }
+
+
         return json_encode($resultado);
     }
 
@@ -127,14 +133,84 @@ class Producto{
         $resumen=$_REQUEST['resumen'];
         $descripcion=$_REQUEST['descripcion'];
         $precio=$_REQUEST['precio'];
+
+        if(isset($_FILES['file1']['name'])){
+
+            /* Getting file name */
+            $filename = $_FILES['file1']['name'];
+         
+            /* Location */
+            $location = '../img/productos/'.$filename;
+            $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
+            $imageFileType = strtolower($imageFileType);
+         
+            /* Valid extensions */
+            $valid_extensions = array("jpg","jpeg","png");
+         
+            $response = 0;
+            /* Check file extension */
+            if(in_array(strtolower($imageFileType), $valid_extensions)) {
+               /* Upload file */
+               if(move_uploaded_file($_FILES['file1']['tmp_name'],$location)){
+                  $response = $location;
+               }
+            }
+        }
+
+        if(isset($_FILES['file2']['name'])){
+
+            /* Getting file name */
+            $filename = $_FILES['file2']['name'];
+         
+            /* Location */
+            $location = $filename;
+            $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
+            $imageFileType = strtolower($imageFileType);
+         
+            /* Valid extensions */
+            $valid_extensions = array("jpg","jpeg","png");
+         
+            $response = 0;
+            /* Check file extension */
+            if(in_array(strtolower($imageFileType), $valid_extensions)) {
+               /* Upload file */
+               if(move_uploaded_file($_FILES['file2']['tmp_name'],$location)){
+                  $response = $location;
+               }
+            }
+        }
+
+        if(isset($_FILES['file3']['name'])){
+
+            /* Getting file name */
+            $filename = $_FILES['file3']['name'];
+         
+            /* Location */
+            $location = $filename;
+            $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
+            $imageFileType = strtolower($imageFileType);
+         
+            /* Valid extensions */
+            $valid_extensions = array("jpg","jpeg","png");
+         
+            $response = 0;
+            /* Check file extension */
+            if(in_array(strtolower($imageFileType), $valid_extensions)) {
+               /* Upload file */
+               if(move_uploaded_file($_FILES['file3']['tmp_name'],$location)){
+                  $response = $location;
+               }
+            }
+        }
         $id = null;
+        $file1 = $_FILES['file1']['name'];
+        $file2 = $_FILES['file2']['name'];
+        $file3 = $_FILES['file3']['name'];
         try{//se meten los datos del producto en la bbdd
-            $sentencia = " INSERT INTO productos (id,nombre,marca,categoria,unidades,resumen,descripcion,precio) VALUES ('','$nombre','$marca','$categoria','$unidades','$resumen','$descripcion','$precio')";
+            $sentencia = " INSERT INTO productos (id,nombre,marca,categoria,unidades,resumen,descripcion,precio, file1, file2, file3) VALUES ('','$nombre','$marca','$categoria','$unidades','$resumen','$descripcion','$precio', '$file1', '$file2', '$file3')";
 
             $id=DB::insert($sentencia);
-            
-
-            
+         
 
         }catch(Exception $e){
             $errores[]=$e->getMessage();//añado el mensaje del error
