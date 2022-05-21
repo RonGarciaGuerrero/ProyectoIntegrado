@@ -16,9 +16,10 @@
         <header>
             <div class="logo">
               <div class="container">
-              <a href="./index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
-              <a href="./index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
-              <div class="login"><a href="./carrito.html"><img src="../img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
+              <a href="../index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
+              <a href="../index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
+              <div class="login">
+                <a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
               </div>
             </div>
             <nav>
@@ -31,22 +32,19 @@
         <main>
             <!--  -->
             
-            <div class="my-3"></div>
+            <div class="mt-5"></div>
             <div id="login">
             <form action="../php/login.php" class="border border-2 border-warning rounded m-auto p-4 bg-light w-50">
               <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre de usuario:</label>
                 <input name="usuario" type="text" class="form-control" id="usuario" aria-describedby="emailHelp" required>
-                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
                 <input name="password" type="password" class="form-control" id="password" required>
               </div>
-              <!-- <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-              </div> -->
+
               <input id="iniciar" type="submit" class="btn btn-primary" value="Iniciar Sesion">
               <br><br>
               <div id="errorusuario"><p></p></div>

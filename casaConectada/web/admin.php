@@ -27,7 +27,8 @@
               <div class="container">
               <a href="../index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
               <a href="../index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
-              <div class="login"><a href="./carrito.html"><img src="../img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
+              <div class="login">
+                <a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
               </div>
             </div>
             <nav>
@@ -37,10 +38,10 @@
                 </div>
               </nav>
           </header>
-        <main class="m-4"> 
+        <main> 
             <!--  -->
-          <div class="container-fluid">
-            <h2>Bienvenido a Administración de Casa Conectada</h2>
+          <div class="container-fluid mt-5 bg-light py-5">
+            <h2 class="text-center">Bienvenido a Administración de Casa Conectada</h2>
             <h4 class="py-1">Usuario:</h4>
             <h6 class="py-1">
               <?php 
@@ -48,12 +49,12 @@
               ?>
             </h6>
             <br><br>
-            <div class="container-fluid">
+            <div class="container">
               <div class="row">
-                <div class="col m-1">
+                <div class="col d-grid my-4">
                   <a href="./gestionarPedidos.php" type="button" class="mx-4 btn btn-outline-primary btn-lg">Gestionar Pedidos</a>
                 </div>
-                <div class="col m-1">
+                <div class="col d-grid my-4">
                   <a href="./gestionarProductos.php" type="button" class="mx-4 btn btn-outline-primary btn-lg">Gestionar Productos</a>  
                 </div>
               </div>

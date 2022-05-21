@@ -30,7 +30,8 @@
               <div class="container">
               <a href="./index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
               <a href="./index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
-              <div class="login"><a href="./carrito.html"><img src="../img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
+              <div class="login">
+                <a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
               </div>
             </div>
             <nav>
@@ -40,8 +41,8 @@
                 </div>
               </nav>
           </header>
-        <main class="mx-4">
-            <h2>Gestionar Pedidos</h2>
+        <main>
+            <h2 class="mt-4">Gestionar Pedidos</h2>
             <h4 class="py-1">Usuario:</h4>
             <h6 class="py-1">
               <?php 
@@ -148,6 +149,7 @@
 
             <div style="height: 10px;"></div>        
         </main>
+        
         <!-- Footer responsive con bootstrap -->
         <div class="container-fluid">
           <div class="row">

@@ -1,5 +1,5 @@
 //Función para mostrar los objetos producto 
-var rutaImagenes = "/PI/casaConectada/img/";
+var rutaImagenes = "/PI/casaConectada/img";
 function crearProductos(productos,prefijo) {
 var cadena = "";
 //Itero entre cada objeto producto

@@ -1,3 +1,5 @@
+http://localhost/PI/casaConectada/index.html
+
 lista casa conectada:
 
 1- Administración
@@ -48,11 +50,15 @@ Enviar correo de confirmacion
 ********************
 falta eliminar y editar en el gestionar productos
 
-crear un detallepedido.php que sea la pagian q que muestra el detalledel producto, al principio se carga de la bbdd el pedido cuyo id se obtiene del request
 
 ********************
 
-ene l detalle del pedido el numero de la provincia hay que transformarla al nombre de la provincia
+en el detalle del pedido el numero de la provincia hay que transformarla al nombre de la provincia porque de momento aparece solo el numero de la provincia.
 
-rellenar tabla con productos del pedido
-revisar el bardge en las paginas nuevas
+revisar el badge en las paginas nuevas
+
+meter un enlace de volver a admin.php desde gestionar pedidos o desde gestionar productos
+
+quitar añadir en el gestionar pedidos
+
+corregir los botones de filtrar por categoria que no son responsive porque se pintan de forma dinámica
