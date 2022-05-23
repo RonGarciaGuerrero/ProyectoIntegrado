@@ -90,7 +90,7 @@
                     <td><?php print($pedido -> email)?></td>
                     <td><?php print($pedido -> direccion)?></td>
                     <td><?php print($pedido -> cp)?></td>
-                    <td><?php print($pedido -> provincia)?></td>
+                    <td><?php print($pedido -> provinciaTxt)?></td>
                     <td class="text-end"><?php print($pedido -> precioEnvio)?>€</td>
                   </tr>
 

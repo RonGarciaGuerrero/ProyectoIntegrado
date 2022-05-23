@@ -52,13 +52,7 @@ falta eliminar y editar en el gestionar productos
 
 
 ********************
+Mostrar foto en la ficha del producto
 
-en el detalle del pedido el numero de la provincia hay que transformarla al nombre de la provincia porque de momento aparece solo el numero de la provincia.
+enviar correo electronico con el número del pedido (si es posible)
 
-revisar el badge en las paginas nuevas
-
-meter un enlace de volver a admin.php desde gestionar pedidos o desde gestionar productos
-
-quitar añadir en el gestionar pedidos
-
-corregir los botones de filtrar por categoria que no son responsive porque se pintan de forma dinámica

@@ -14,6 +14,8 @@ for(var i=0; i<productos.length;i++){
         <div class="card-body">
             <h5 class="card-title">${prod.nombre}</h5>
             <p class="card-text">${prod.resumen}</p>
+            <h6 class="card-title">${prod.marca}</h6>
+            <h6 class="card-title">${prod.precio}€</h6>
             <a href="./producto.html?idProd=${prod.id}" class="btn btn-outline-dark">Detalle</a>
         </div>
     </div>`
@@ -88,11 +90,18 @@ $("document").ready( function () {
             //pintar botones de forma dinámica
             let cadena ="";
             for(i=0;i<infoCategorias.length;i++){
+                // cada tres botones metemos una fila nueva
+                if (i % 3 == 0){
+                    if (i != 0){ 
+                        cadena += `</div>`;
+                    }
+                    cadena += `<div class="row">`;
+                }
                 cadena+=`
-                <button id="filtro-${infoCategorias[i]}" class="btn-filtroCategoria btn btn-dark">Filtrar por ${infoCategorias[i]}</button>`
+                <div class="col"><button id="filtro-${infoCategorias[i]}" class="btn-filtroCategoria btn btn-dark mb-1 ">Filtrar por ${infoCategorias[i]}</button></div>`
             
             }
-            cadena+='<button id="limpiar-filtros" class="eliminarFiltro btn btn-dark">Eliminar Filtro</button>';
+            cadena += `</div><div class="row"><div class="col"><button id="limpiar-filtros" class="eliminarFiltro btn btn-dark">Eliminar Filtro</button></div></div>`;
 
             $(".filtros").html(cadena);
             $(".btn-filtroCategoria").click(function(event){

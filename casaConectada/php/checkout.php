@@ -3,7 +3,65 @@
 //Requerimiento de acceso a base de datos.
 require_once(dirname(__FILE__).'/../PHP/DB.php');
 
+
+
 class Pedido{ 
+    public static $PROVINCIAS = [
+        null,
+        "Álava",
+"Albacete",
+"Alicante",
+"Almería",
+"Ávila",
+"Badajoz",
+"Baleares",
+"Barcelona",
+"Burgos",
+"Cáceres",
+"Cádiz",
+"Castellón",
+"Ciudad Real",
+"Córdoba",
+"La Coruña",
+"Cuenca",
+"Gerona/Girona",
+"Granada",
+"Guadalajara",
+"Guipúzcoa",
+"Huelva",
+"Huesca",
+"Jaén",
+"León",
+"Lérida/Lleida",
+"La Rioja",
+"Lugo",
+"Madrid",
+"Málaga",
+"Murcia",
+"Navarra",
+"Orense",
+"Asturias",
+"Palencia",
+"Las Palmas",
+"Pontevedra",
+"Salamanca",
+"Santa Cruz de Tenerife",
+"Cantabria",
+"Segovia",
+"Sevilla",
+"Soria",
+"Tarragona",
+"Teruel",
+"Toledo",
+"Valencia",
+"Valladolid",
+"Vizcaya",
+"Zamora",
+"Zaragoza",
+"Ceuta",
+"Melilla"
+    ]
+    ;
 
     public $id;
     public $nombre;
@@ -12,11 +70,12 @@ class Pedido{
     public $direccion;
     public $cp;
     public $provincia;
+    public $provinciaTxt;
     public $precioEnvio;
     public $estatus;
     public $productos;
 
-    function __construct($id,$nombre,$apellidos,$email,$direccion,$cp,$provincia,$precioEnvio, $estatus, $productos){
+    function __construct($id,$nombre,$apellidos,$email,$direccion,$cp,$provincia,$provinciaTxt,$precioEnvio, $estatus, $productos){
 
         $this->id=$id;
         $this->nombre=$nombre;
@@ -25,6 +84,7 @@ class Pedido{
         $this->direccion=$direccion;
         $this->cp=$cp;
         $this->provincia=$provincia;
+        $this->provinciaTxt=$provinciaTxt;
         $this->precioEnvio=$precioEnvio;
         $this->estatus = $estatus;
         $this->productos=$productos;
@@ -146,14 +206,14 @@ class Pedido{
     static function mostrarPedidos(){
         
         
-        $sentencia = "SELECT * FROM pedidos";
+        $sentencia = "SELECT * from pedidos";
         
         
 
         $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
         $pedidos = Array();
         foreach($result as $ped){
-            array_push($pedidos, new Pedido($ped["id"],$ped["nombre"],$ped["apellidos"],$ped["email"],$ped["direccion"],$ped["codigo_postal"],$ped["provincia"],$ped["precio_envio"],$ped['estatus'],null));
+            array_push($pedidos, new Pedido($ped["id"],$ped["nombre"],$ped["apellidos"],$ped["email"],$ped["direccion"],$ped["codigo_postal"],$ped["provincia"], self::$PROVINCIAS[$ped["provincia"]], $ped["precio_envio"],$ped['estatus'],null));
         }
         return json_encode($pedidos);
     
@@ -182,7 +242,7 @@ class Pedido{
             array_push($productos, $resultDetalle);
         }
 
-        return new Pedido($result['id'],$result['nombre'],$result['apellidos'],$result['email'],$result['direccion'],$result['codigo_postal'],$result['provincia'],$result['precio_envio'], $result['estatus'], $productos);
+        return new Pedido($result['id'],$result['nombre'],$result['apellidos'],$result['email'],$result['direccion'],$result['codigo_postal'],$result['provincia'], self::$PROVINCIAS[$result["provincia"]], $result['precio_envio'], $result['estatus'], $productos);
 
     }
 

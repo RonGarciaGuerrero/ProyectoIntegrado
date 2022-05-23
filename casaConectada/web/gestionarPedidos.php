@@ -28,8 +28,8 @@
         <header>
             <div class="logo">
               <div class="container">
-              <a href="./index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
-              <a href="./index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
+              <a href="../index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
+              <a href="../index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
               <div class="login">
                 <a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
               </div>
@@ -49,60 +49,6 @@
                 print($usuario -> nombre . ' ' . $usuario -> apellidos);
               ?>
             </h6>
-            <div class="divAniadir"> <button class="btn btn-dark" id="botonAniadir">Añadir</button></div>
-            <div style="clear: both; height: 10px;"></div>
-            <div  class="container-fluid border border-dark rounded m-auto w-50 my-4 bg-warning p-2" id="formulario">
-                <h3 class="text-center">Añadir Productos</h3>
-                
-                
-                <table class="tablaAniadir">
-                    <tr>
-                        <td><label for="nombre">Nombre</label></td>
-                        <td><input id="nombre" type="text" required></td> 
-                    </tr>
-                    <tr>
-                        <td><label for="marca">Marca</label></td>
-                        <td><input id="marca" type="text" required></td> 
-                    </tr>
-                    <tr>
-                        <td><label for="categoria">Categoria</label></td>
-                        <td>
-                            <select name="categoria" id="categoria">
-                                <option value="">-Selecionar-</option>
-                                <option value="botones">Botones</option>
-                                <option value="luces">Luces</option>
-                                <option value="aires acondicionados">Aires Acondicionados</option>
-                                <option value="cerraduras">Cerraduras</option>
-                            </select>
-                        </td> 
-                    </tr>
-                    <tr>
-                        <td><label for="cantidad">Cantidad</label></td>
-                        <td><input id="cantidad" type="number" required min="0"></td> 
-                    </tr>
-                    <tr>
-                        <td><label for="precio">Precio</label></td>
-                        <td><input id="precio" type="number" required min="0"></td> 
-                    </tr>
-                    <tr>
-                        <td><label for="resumen">Resumen</label></td>
-                        <td><input id="resumen" type="text" required maxlength="500"></td> 
-                    </tr>
-                    <tr>
-                        <td><label for="resumen">Foto</label></td>
-                        <td><input id="resumen" type="file"></td> 
-                    </tr>
-                    <tr>
-                        <td><label for="descripcion">Descripción</label></td>
-                        <td><textarea id="descripcion" rows="2" cols="23" required></textarea></td> 
-                    </tr>
-                    <tr>
-                        <td colspan="2"><button class="btn btn-outline-dark" id="cancelar">Cancelar</button>&nbsp;<button class="btn btn-outline-dark" id="aceptar">Aceptar</button> <br/> </td>
-                    </tr>
-                </table>
-                <div id="errores"></div>
-                
-            </div>
             
             <div class="table-responsive" id="tablaPedidos">
               <table class="table table-striped table-hover table-bordered" >
@@ -146,6 +92,7 @@
                 
                 <!-- Fin modal -->
 
+                <a href="./admin.php" type="button" class="my-5 btn btn-outline-primary btn-lg">Volver a Administración</a>
 
             <div style="height: 10px;"></div>        
         </main>

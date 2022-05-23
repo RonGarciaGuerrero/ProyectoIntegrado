@@ -210,12 +210,13 @@ body {
   background-position: center;
   background-size: cover;
 }
-.filtros{
+
+/*.filtros{
   margin-top: 20px;
   display: flex;
   justify-content: center;
   grid-gap: 10px;
-}
+}*/
 
 /* Reglas de La Tienda */
 .laTienda{

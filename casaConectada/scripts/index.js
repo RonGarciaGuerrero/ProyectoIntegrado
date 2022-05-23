@@ -15,7 +15,10 @@ for(var i=0; i<productos.length;i++){
         <div class="card-body">
             <h5 class="card-title">${prod.nombre}</h5>
             <p class="card-text">${prod.resumen}</p>
+            <h6 class="card-title">${prod.marca}</h6>
+            <h6 class="card-title">${prod.precio}€</h6>
             <a href="./web/producto.html?idProd=${prod.id}" class="btn btn-outline-dark">Detalle</a>
+
         </div>
     </div>`
 }  
