@@ -48,11 +48,11 @@ HAY QUE AÑADIR UNA RESTRICCION ENL ABBDD PAAR QUE EN LA COLUMNA CANTIDAD TIENE 
 Enviar correo de confirmacion 
 
 ********************
-falta eliminar y editar en el gestionar productos
+falta editar en el gestionar productos
 
 
 ********************
-Mostrar foto en la ficha del producto
-
 enviar correo electronico con el número del pedido (si es posible)
+mover los errores de los formularios de añadir para que estén encima de los botones de aceptar y cancelar
+arreglar la tabla de productos, eliminar basura y configurar las 3 fotos para cada uno
 

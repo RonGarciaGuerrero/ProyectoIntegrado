@@ -13,8 +13,11 @@ class Producto{
     public $resumen;
     public $descripcion;
     public $precio;
+    public $foto1;
+    public $foto2;
+    public $foto3;
 
-    function __construct($id,$nombre,$marca,$categoria,$unidades,$resumen,$descripcion,$precio){
+    function __construct($id,$nombre,$marca,$categoria,$unidades,$resumen,$descripcion,$precio, $foto1, $foto2, $foto3){
 
         $this->id=$id;
         $this->nombre=$nombre;
@@ -24,7 +27,9 @@ class Producto{
         $this->resumen=$resumen;
         $this->descripcion=$descripcion;
         $this->precio=$precio;
-
+        $this->foto1=$foto1;
+        $this->foto2=$foto2;
+        $this->foto3=$foto3;
     }
 
     static function obtenerProductos(){
@@ -40,7 +45,7 @@ class Producto{
         $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
         $productos = Array();
         foreach($result as $prod){
-            array_push($productos, new Producto($prod["id"],$prod["nombre"],$prod["marca"],$prod["categoria"],$prod["unidades"],$prod["resumen"],$prod["descripcion"],$prod["precio"]));
+            array_push($productos, new Producto($prod["id"],$prod["nombre"],$prod["marca"],$prod["categoria"],$prod["unidades"],$prod["resumen"],$prod["descripcion"],$prod["precio"], $prod["file1"], $prod["file2"], $prod["file3"]));
         }
         return json_encode($productos);
     }
@@ -59,8 +64,8 @@ class Producto{
         $idProd=$_REQUEST['idPro'];
         $sentencia = "SELECT * FROM productos where id = $idProd";
         $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
-
-        return json_encode($result[0]);//el primer resultado
+        $prod = $result[0];
+        return json_encode(new Producto($prod["id"],$prod["nombre"],$prod["marca"],$prod["categoria"],$prod["unidades"],$prod["resumen"],$prod["descripcion"],$prod["precio"], $prod["file1"], $prod["file2"], $prod["file3"]));//el primer resultado
     }
 
     static function guardarProducto(){
@@ -163,7 +168,7 @@ class Producto{
             $filename = $_FILES['file2']['name'];
          
             /* Location */
-            $location = $filename;
+            $location = '../img/productos/'.$filename;
             $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
             $imageFileType = strtolower($imageFileType);
          
@@ -186,7 +191,7 @@ class Producto{
             $filename = $_FILES['file3']['name'];
          
             /* Location */
-            $location = $filename;
+            $location = '../img/productos/'.$filename;
             $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
             $imageFileType = strtolower($imageFileType);
          
@@ -225,6 +230,7 @@ class Producto{
 
     static function eliminarProductoBbdd(){
         $idEliminar = $_REQUEST['idEliminar'];
+
         $sentencia = "DELETE FROM productos WHERE id=$idEliminar";
         DB::query($sentencia);
 

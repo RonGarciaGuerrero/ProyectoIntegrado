@@ -10,9 +10,9 @@ $("document").ready( function () {
             $("#nomPro").html(infoProducto.nombre);
             
             $("#resPro").html(infoProducto.resumen);
-            $("#fotoPro1").attr('src',`/PI/casaConectada/img/productos/${infoProducto.file1}`);
-            $("#fotoPro2").attr('src',`/PI/casaConectada/img/productos/${infoProducto.file2}`);
-            $("#fotoPro3").attr('src',`/PI/casaConectada/img/productos/${infoProducto.file3}`);
+            $("#fotoPro1").attr('src',`/PI/casaConectada/img/productos/${infoProducto.foto1}`);
+            $("#fotoPro2").attr('src',`/PI/casaConectada/img/productos/${infoProducto.foto2}`);
+            $("#fotoPro3").attr('src',`/PI/casaConectada/img/productos/${infoProducto.foto3}`);
             $("#idProducto").val(idProducto);
             
             //alert('otro hola');

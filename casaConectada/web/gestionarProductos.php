@@ -78,9 +78,10 @@
                     <label class="form-label" for="file">Foto</label>
                     <input class="form-control" id="file" name="file" type="file" multiple>
                     <label class="form-label" for="descripcion">Descripción</label>
-                    <textarea class="form-control" name="descripcion" placeholder="Escribe aqui la descripción" id="descripcion" rows="2" cols="23" required></textarea> <br>
-                    <button class="btn btn-outline-dark" id="cancelar">Cancelar</button>&nbsp;<button class="btn btn-outline-dark" id="aceptar">Aceptar</button> <br/>
+                    <textarea class="form-control" name="descripcion" placeholder="Escribe aqui la descripción" id="descripcion" rows="2" cols="23" required></textarea> <br/>
+                    
                     <div id="errores"></div>
+                    <button class="btn btn-outline-dark" id="cancelar">Cancelar</button>&nbsp;<button class="btn btn-outline-dark" id="aceptar">Aceptar</button><br/>
 
                   </div>
             </form>
@@ -93,6 +94,7 @@
             <table class="table table-striped table-hover table-bordered" >
               <thead>
                 <th>Id</th>
+                <th>Foto</th>
                 <th>Nombre</th>
                 <th>Marca</th>
                 <th>Categoria</th>

@@ -37,9 +37,9 @@
         <header>
             <div class="logo">
               <div class="container">
-              <a href="./index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
-              <a href="./index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
-              <div class="login"><a href="./carrito.html"><img src="../img/icons/shopping-cart.png" alt="carrito" height="15px" title="Carrito"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
+              <a href="../index.html"><img src="../img/logoimagen.png" class="logo" height="50px"></a>
+              <a href="../index.html"><img src="../img/logoTexto.png" alt="Casa Conectada" height="25px" class="casa"></a>
+              <div class="login"><a href="./login.html"><img src="../img/icons/padlock.png" alt="login" height="15px" title="Login"></a></div>
               </div>
             </div>
             <nav>

@@ -11,7 +11,7 @@ for(var i=0; i<productos.length;i++){
     //Uso de String template --> Javascrip ECMA6
     cadena +=`<div class="card prod bg-warning" style="width: 18rem;">
         
-        <div style="background-image:url(${prefijo}/productos/prod_${prod.id}_1.jpg)" class="card-img-top" alt="${prod.nombre}"></div>
+        <div style="background-image:url(${prefijo}/productos/${prod.foto1})" class="card-img-top" alt="${prod.nombre}"></div>
         <div class="card-body">
             <h5 class="card-title">${prod.nombre}</h5>
             <p class="card-text">${prod.resumen}</p>

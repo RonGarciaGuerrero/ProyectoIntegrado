@@ -10,6 +10,7 @@ for(var i=0; i<productos.length;i++){
     var prod = productos[i];
     cadena += `<tr>
         <td>${prod.id}</td>
+        <td><img src="${prefijo}/${prod.foto1}" class="miniatura" /></td>
         <td>${prod.nombre}</td>
         <td>${prod.marca}</td>
         <td>${prod.categoria}</td>
@@ -40,7 +41,7 @@ function pintarListaEntera(){
         success : function(infoProductos){
             //console.log(infoProductos);
             //a la variable html se le asigna el resultado de evaluar la funcion crearTablaProductos con el parametro que son todos los productos en formato JSON
-            let html = crearTablaProductos(infoProductos);
+            let html = crearTablaProductos(infoProductos, "../img/productos");
             $('#tablaProductos tbody').html(html);
             
             //cuando se haga click a un boton eliminar se debera meter en el modal el id del producto que se intenta eliminar
@@ -191,13 +192,6 @@ $("document").ready( function () {
                }
               });
 
-            
-            
-            
-            // $(".eliminar").click(borrarFila);
-            //al añadir un nuevo elemento que tiene un boton eliminar que no existia antes, se vuelve a asociar el listener
-
-            // document.getElementById("formulario").style.display="none";
             
 
 
