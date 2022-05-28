@@ -15,8 +15,8 @@ for(var i=0; i<productos.length;i++){
         <td>${prod.marca}</td>
         <td>${prod.categoria}</td>
         <td>${prod.unidades}</td>
-        <td>${prod.resumen}</td>
-        <td>${prod.descripcion}</td>
+        <td><div class="resumen">${prod.resumen}</div</td>
+        <td><div class="descripcion">${prod.descripcion}</div</td>
         <td>${prod.precio}</td>
         <td><button id="eliminar_${prod.id}" type="button" class="botonEliminar btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal">Eliminar</button></td>
 

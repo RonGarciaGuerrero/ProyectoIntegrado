@@ -52,7 +52,17 @@ falta editar en el gestionar productos
 
 
 ********************
-enviar correo electronico con el número del pedido (si es posible)
-mover los errores de los formularios de añadir para que estén encima de los botones de aceptar y cancelar
-arreglar la tabla de productos, eliminar basura y configurar las 3 fotos para cada uno
+
+el logo no sale en el correo, el borde tampoco
+
+el boton de continua lleva acento en la ú
+
+el boton de continua debe desactivarse cuando se hace el pedido y activarse solamente si ocurre un error
+
+en detalle la cantidad no se ve en version movil
+
+asegurarse de que cada producto tiene 3 fotos guardada en imagen
+
+verificar que los mensajes de error se ven iguales y no quedan ocultos con el scroll
+
 
