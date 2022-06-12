@@ -86,6 +86,8 @@ $("document").ready( function () {
         $("#cantidad").val('');
         $("#descripcion").val('');
         $("#precio").val('');
+        $("#resumen").val('');
+        $("#file").val('');
     }
 
     //AÑADIR Oculto el boton

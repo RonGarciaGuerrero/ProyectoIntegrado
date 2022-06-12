@@ -2,7 +2,7 @@ $("document").ready( function () {
 
   let myModal = new bootstrap.Modal(document.getElementById('myModal'));
   let myModal2 = new bootstrap.Modal(document.getElementById('myModal2'));
-  //cuando se hace click en checkout ya no se puedemo dificar el producto
+  //cuando se hace click en checkout ya no se puede modificar el producto
     $("form button[type='submit']").click(function(event){
       event.preventDefault();
       $("form").addClass("enviado");

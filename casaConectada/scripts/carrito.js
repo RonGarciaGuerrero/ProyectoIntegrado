@@ -38,7 +38,7 @@ $("document").ready( function () {
                             // alert(fila);
                             //https://developer.mozilla.org/es/docs/Web/CSS/:nth-of-type
 
-                            $(fila).find("td:nth-of-type(1) img").attr('src',`/PI/casaConectada/img/productos/prod_${infoProducto.id}_1.jpg`);
+                            $(fila).find("td:nth-of-type(1) img").attr('src',`/PI/casaConectada/img/productos/${infoProducto.foto1}`);
 
                             $(fila).find("td:nth-of-type(2)").html(infoProducto.nombre);
                             $(fila).find("td:nth-of-type(4)").html(infoProducto.precio+"€");

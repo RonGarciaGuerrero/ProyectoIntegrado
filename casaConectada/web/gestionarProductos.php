@@ -7,6 +7,8 @@
     header('Location: ../web/login.html?error=noautenticado');//se redirige a login
     die();
   }
+  require_once(dirname(__FILE__).'/../PHP/producto.php');
+  $categorias = Producto::obtenerCategoriasArray();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -63,11 +65,12 @@
                     <input class="form-control" id="marca" name="marca" type="text" required>
                     <label class="form-label" for="categoria">Categoria</label>
                     <select class="form-select" aria-label="Default select example" name="categoria" id="categoria">
-                      <option value="">-Selecionar-</option>
-                      <option value="botones">Botones</option>
-                      <option value="luces">Luces</option>
-                      <option value="aires acondicionados">Aires Acondicionados</option>
-                      <option value="cerraduras">Cerraduras</option>
+                      <option value="" selected="selected">-Selecionar-</option>
+                      <?php
+                        for($i=0; $i<count($categorias); $i++){
+                          echo "<option>".$categorias[$i]."</option>";
+                        }
+                      ?>
                     </select>
                     <label class="form-label" for="cantidad">Cantidad</label>
                     <input class="form-control" id="cantidad" type="number" name="cantidad" required min="0">

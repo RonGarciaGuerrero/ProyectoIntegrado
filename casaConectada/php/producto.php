@@ -50,14 +50,20 @@ class Producto{
         return json_encode($productos);
     }
 
-    static function obtenerCategorias(){
-        $sentencia = "SELECT distinct categoria FROM productos";
+    // Devuelve un array de PHP con las categorias
+    static function obtenerCategoriasArray(){
+        $sentencia = "SELECT distinct categoria FROM productos ORDER BY categoria";
         $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
         $categorias = Array();
         foreach($result as $cat){
             array_push($categorias, $cat["categoria"]);
         }
-        return json_encode($categorias);
+        return ($categorias);
+    }
+
+    // Devuelve las categorias en formato JSON
+    static function obtenerCategorias(){
+        return json_encode(Producto::obtenerCategoriasArray());
     }
 
     static function obtenerDetalleProducto(){
@@ -232,20 +238,21 @@ class Producto{
     }
 
 }
-if($_REQUEST['funcion']=='obtenerCategorias'){
-    print(Producto::obtenerCategorias());
+if (array_key_exists('funcion', $_REQUEST)){
+    if($_REQUEST['funcion']=='obtenerCategorias'){
+        print(Producto::obtenerCategorias());
+    }
+    if($_REQUEST['funcion']=='obtenerProductos'){
+        print(Producto::obtenerProductos());//imprime todos los productos en JSON, llamada a obtenerProductos()
+    }
+    if($_REQUEST['funcion']=='obtenerDetalleProducto'){
+        print(Producto::obtenerDetalleProducto());//imprime un producto identificado por id
+    }
+    if($_REQUEST['funcion']=='guardarProducto'){
+        print(Producto::guardarProducto());
+    }
+    if($_REQUEST['funcion']=='eliminarProductoBbdd'){
+        Producto::eliminarProductoBbdd();
+    }
 }
-if($_REQUEST['funcion']=='obtenerProductos'){
-    print(Producto::obtenerProductos());//imprime todos los productos en JSON, llamada a obtenerProductos()
-}
-if($_REQUEST['funcion']=='obtenerDetalleProducto'){
-    print(Producto::obtenerDetalleProducto());//imprime un producto identificado por id
-}
-if($_REQUEST['funcion']=='guardarProducto'){
-    print(Producto::guardarProducto());
-}
-if($_REQUEST['funcion']=='eliminarProductoBbdd'){
-    Producto::eliminarProductoBbdd();
-}
-
 ?>
