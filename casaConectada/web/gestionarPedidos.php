@@ -37,7 +37,7 @@
             <nav>
                 <a href="#"><div class="secciones">
                   <div class="container">
-                  <a href="./laTienda.html"><div class="sec">La tienda</div></a></a><a href="./seccionProductos.html"><div class="sec">Productos</div></a><a href="./marcas.html"><div class="sec">Marcas</div></a><a href="./servicios.html"><div class="sec">Servicios</div></a><div style="clear: both;"></div></div>
+                  <a href="./laTienda.html"><div class="sec">La tienda</div></a></a><a href="./seccionProductos.html"><div class="sec">Productos</div></a><a href="./servicios.html"><div class="sec">Servicios</div></a><div style="clear: both;"></div></div>
                 </div>
               </nav>
           </header>

@@ -1,7 +1,7 @@
 $("document").ready(function() {
     $("#estatus-pedido").submit(function(e){
         e.preventDefault();
-
+//este actualiza el status del pedido
         $.ajax({
             type:"POST",//Porque se estan modificando datos en la bbdd
             url: "../PHP/checkout.php",

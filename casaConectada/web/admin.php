@@ -34,13 +34,13 @@
             <nav>
                 <a href="#"><div class="secciones">
                   <div class="container">
-                  <a href="./laTienda.html"><div class="sec">La tienda</div></a></a><a href="./seccionProductos.html"><div class="sec">Productos</div></a><a href="./marcas.html"><div class="sec">Marcas</div></a><a href="./servicios.html"><div class="sec">Servicios</div></a><div style="clear: both;"></div></div>
+                  <a href="./laTienda.html"><div class="sec">La tienda</div></a></a><a href="./seccionProductos.html"><div class="sec">Productos</div></a><a href="./servicios.html"><div class="sec">Servicios</div></a><div style="clear: both;"></div></div>
                 </div>
               </nav>
           </header>
         <main> 
             <!--  -->
-          <div class="container-fluid mt-5 bg-light py-5">
+          <div class="container mt-5 bg-light py-5">
             <h2 class="text-center">Bienvenido a Administración de Casa Conectada</h2>
             <h4 class="py-1">Usuario:</h4>
             <h6 class="py-1">

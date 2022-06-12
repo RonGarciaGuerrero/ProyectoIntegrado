@@ -107,10 +107,6 @@ class Producto{
             }
         }
 
-        /*if(!array_key_exists("file1",$_REQUEST)){
-            array_push($errores,'Debe agregar tres fotos');
-        }*/
-
         //una vez terminadas las validaciones o se guarda el producto o se devuelven errores
         if(count($errores)==0){
             
@@ -120,7 +116,6 @@ class Producto{
         }else{
             $resultado['guardado']=false;
             $resultado['errores']=$errores;
-            
 
         }
 

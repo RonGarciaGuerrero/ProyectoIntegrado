@@ -55,8 +55,6 @@ falta editar en el gestionar productos
 
 el logo no sale en el correo, el borde tampoco
 
-el boton de continua lleva acento en la ú
-
 el boton de continua debe desactivarse cuando se hace el pedido y activarse solamente si ocurre un error
 
 en detalle la cantidad no se ve en version movil
@@ -64,5 +62,12 @@ en detalle la cantidad no se ve en version movil
 asegurarse de que cada producto tiene 3 fotos guardada en imagen
 
 verificar que los mensajes de error se ven iguales y no quedan ocultos con el scroll
+
+------------------------------------------
+
+Presentacion
+
+1-Resumen de la última presentación que incluye desiciones tomadas en torno a la marca, colores corporativos, logo, wireframes, etc
+2-Desarrollo del proyecto desde marzo, creacion de la bbdd, conexion del front con la bbdd mediante estructura de llamadas  
 
 
